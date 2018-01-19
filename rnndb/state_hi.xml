@@ -267,12 +267,43 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         </reg32>
         <reg32 offset="0x00190" name="EXCEPTION_ADDR" length="4"/>
         <reg32 offset="0x001A4" name="PROFILE_BLT_READ"/> <!-- Blit engine debug register read -->
-        <reg32 offset="0x001AC" name="UNK001AC"/> <!-- SECURITY || ROBUSTNESS -->
+        <reg32 offset="0x001AC" name="PTA_CONFIG" brief="Pagetable Array configuration">
+            <doc>The PTA is a new paging structure above the MTLB</doc>
+            <bitfield high="15" low="0" name="INDEX" brief="index of the MTLB to load"/>
+            <bitfield high="16" low="16" name="UNK16"/>
+        </reg32>
         <reg32 offset="0x001C0" name="AXI_POLICY" length="8" stride="4">
             <doc>
                 AXI config per policy ID, ConfigurePolicyID in Vivante kernel driver.
                 This allows setting different AXI configurations for different pages in the MMU.
             </doc>
+        </reg32>
+        <reg32 offset="0x00380" name="SEC_EXCEPTION_ADDR"/>
+        <reg32 offset="0x00384" name="SEC_STATUS" brief="Secure status register that holds which MMU generated an exception">
+            <bitfield high="1" low="0" name="EXCEPTION0" type="MMU_EXCEPTION" brief="MMU 0 caused an exception"/>
+
+            <bitfield high="5" low="4" name="EXCEPTION1" type="MMU_EXCEPTION" brief="MMU 1 caused an exception"/>
+            <bitfield high="9" low="8" name="EXCEPTION2" type="MMU_EXCEPTION" brief="MMU 2 caused an exception"/>
+            <bitfield high="13" low="12" name="EXCEPTION3" type="MMU_EXCEPTION" brief="MMU 3 caused an exception"/>
+        </reg32>
+        <reg32 offset="0x00388" name="SEC_CONTROL" brief="Control register to enable MMU in secure mode">
+            <bitfield high="0" low="0" name="ENABLE" brief="Enable the MMU"/>
+        </reg32>
+        <reg32 offset="0x0038C" name="PTA_ADDRESS_LOW" brief="physical address of the PTA, lower 32 bits"/>
+        <reg32 offset="0x00390" name="PTA_ADDRESS_HIGH" brief="physical address of the PTA, higher 8 bits"/>
+        <reg32 offset="0x00394" name="PTA_CONTROL">
+            <bitfield high="0" low="0" name="ENABLE"/>
+        </reg32>
+        <reg32 offset="0x00398" name="NONSEC_SAFE_ADDR_LOW" brief="MMU safe address for non-secure accesses, lower 32 bits"/>
+        <reg32 offset="0x0039C" name="SEC_SAFE_ADDR_LOW" brief="MMU safe address for secure accesses, lower 32 bits"/>
+        <reg32 offset="0x003A0" name="SAFE_ADDRESS_CONFIG">
+            <bitfield high="7" low="0" name="NON_SEC_SAFE_ADDR_HIGH"/>
+            <bitfield high="15" low="15" name="UNK15"/>
+            <bitfield high="23" low="16" name="SEC_SAFE_ADDR_HIGH"/>
+            <bitfield high="31" low="31" name="UNK31"/>
+        </reg32>
+        <reg32 offset="0x003A8" name="AHB_CONTROL">
+            <bitfield high="1" low="1" name="NONSEC_ACCESS"/>
         </reg32>
     </stripe>
 
