@@ -443,12 +443,185 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield pos="2" name="DEC"/>
         <bitfield pos="3" name="VS_TILE_NV12"/>
         <bitfield pos="4" name="VS_TILE_NV12_10BIT"/>
+        <bitfield pos="5" name="RENDER_TARGET_8" />
+        <bitfield pos="6" name="TEX_LOD_FLOW_CORR" />
+        <bitfield pos="7" name="FACE_LOD" />
+        <bitfield pos="8" name="MULTI_CORE_SEMAPHORE_STALL_V2" />
+        <bitfield pos="9" name="VMSAA" />
+        <bitfield pos="10" name="CHIP_ENABLE_LINK" />
+        <bitfield pos="11" name="MULTI_SRC_BLT_1_5_ENHANCEMENT" />
+        <bitfield pos="12" name="MULTI_SRC_BLT_BILINEAR_FILTER" />
+        <bitfield pos="13" name="RA_HZEZ_CLOCK_CONTROL" />
+        <bitfield pos="14" name="CACHE128B256BPERLINE"/>
+        <bitfield pos="15" name="V4_COMPRESSION" />
+        <bitfield pos="16" name="PE2D_MAJOR_SUPER_TILE" />
+        <bitfield pos="17" name="PE_32BPC_COLORMASK_FIX" />
+        <bitfield pos="18" name="ALPHA_BLENDING_OPT" />
+        <bitfield pos="19" name="NEW_GPIPE" />
+        <bitfield pos="20" name="PIPELINE_32_ATTRIBUTES" />
+        <bitfield pos="21" name="MSAA_SHADING" />
+        <bitfield pos="22" name="NO_ANISTRO_FILTER" />
+        <bitfield pos="23" name="NO_ASTC" />
+        <bitfield pos="24" name="NO_DXT" />
+        <bitfield pos="25" name="HWTFB" />
+        <bitfield pos="26" name="RA_DEPTH_WRITE_MSAA1X_FIX" />
+        <bitfield pos="27" name="EZHZ_CLOCKGATE_FIX" />
+        <bitfield pos="28" name="SH_SNAP2PAGE_FIX" />
+        <bitfield pos="29" name="SH_HALFDEPENDENCY_FIX" />
+        <bitfield pos="30" name="USC_MCFILL_FIX" />
+        <bitfield pos="31" name="TPG_TCPERF_FIX" />
     </bitset>
     <!-- After this, Vivante stopped using feature bits in favor of a feature
          database in the driver.
          This database is indexed by chip ID, revision, product ID, eco ID and
          customer ID.
+         We still document them as virtual registers to have a consistent
+         way to access them.
       -->
+    <bitset name="chipMinorFeatures7"> <!-- ETNA_GPU_FEATURES_8 -->
+        <bitfield pos="0" name="USC_MDFIFO_OVERFLOW_FIX" />
+        <bitfield pos="1" name="SH_TEXLD_BARRIER_IN_CS_FIX" />
+        <bitfield pos="2" name="RS_NEW_BASEADDR" />
+        <bitfield pos="3" name="PE_8BPP_DUALPIPE_FIX" />
+        <bitfield pos="4" name="SH_ADVANCED_INSTR" />
+        <bitfield pos="5" name="SH_FLAT_INTERPOLATION_DUAL16_FIX" />
+        <bitfield pos="6" name="USC_CONTINUOUS_FLUS_FIX" />
+        <bitfield pos="7" name="SH_SUPPORT_V4" />
+        <bitfield pos="8" name="SH_SUPPORT_ALPHA_KILL" />
+        <bitfield pos="9" name="PE_NO_ALPHA_TEST" />
+        <bitfield pos="10" name="TX_LOD_NEAREST_SELECT" />
+        <bitfield pos="11" name="SH_FIX_LDEXP" />
+        <bitfield pos="12" name="SUPPORT_MOVAI" />
+        <bitfield pos="13" name="SH_SNAP2PAGE_MAXPAGES_FIX" />
+        <bitfield pos="14" name="PE_RGBA16I_FIX" />
+        <bitfield pos="15" name="BLT_8bpp_256TILE_FC_FIX" />
+        <bitfield pos="16" name="PE_64BIT_FENCE_FIX" />
+        <bitfield pos="17" name="USC_FULL_CACHE_FIX" />
+        <bitfield pos="18" name="TX_YUV_ASSEMBLER_10BIT" />
+        <bitfield pos="19" name="FE_32BIT_INDEX_FIX" />
+        <bitfield pos="20" name="BLT_64BPP_MASKED_CLEAR_FIX" />
+        <bitfield pos="21" name="BIT_SECURITY" />
+        <bitfield pos="22" name="BIT_ROBUSTNESS" />
+        <bitfield pos="23" name="USC_ATOMIC_FIX" />
+        <bitfield pos="24" name="SH_PSO_MSAA1x_FIX" />
+        <bitfield pos="25" name="BIT_USC_VX_PERF_FIX" />
+        <bitfield pos="26" name="EVIS_NO_ABSDIFF" />
+        <bitfield pos="27" name="EVIS_NO_BITREPLACE" />
+        <bitfield pos="28" name="EVIS_NO_BOXFILTER" />
+        <bitfield pos="29" name="EVIS_NO_CORDIAC" />
+        <bitfield pos="30" name="EVIS_NO_DP32" />
+        <bitfield pos="31" name="EVIS_NO_FILTER" /> */
+    </bitset>
+    <bitset name="chipMinorFeatures8"> <!-- ETNA_GPU_FEATURES_9 -->
+        <bitfield pos="0" name="EVIS_NO_IADD" />
+        <bitfield pos="1" name="EVIS_NO_SELECTADD" />
+        <bitfield pos="2" name="EVIS_LERP_7OUTPUT" />
+        <bitfield pos="3" name="EVIS_ACCSQ_8OUTPUT" />
+        <bitfield pos="4" name="USC_GOS_ADDR_FIX" />
+        <bitfield pos="5" name="TX_8BIT_UVFRAC" />
+        <bitfield pos="6" name="TX_DESC_CACHE_CLOCKGATE_FIX" />
+        <bitfield pos="7" name="RSBLT_MSAA_DECOMPRESSION" />
+        <bitfield pos="8" name="TX_INTEGER_COORDINATE" />
+        <bitfield pos="9" name="DRAWID" />
+        <bitfield pos="10" name="PSIO_SAMPLEMASK_IN_R0ZW_FIX" />
+        <bitfield pos="11" name="TX_INTEGER_COORDINATE_V2" />
+        <bitfield pos="12" name="MULTI_CORE_BLOCK_SET_CONFIG" />
+        <bitfield pos="13" name="VG_RESOLVE_ENGINE" />
+        <bitfield pos="14" name="VG_PE_COLOR_KEY" />
+        <bitfield pos="15" name="VG_IM_INDEX_FORMAT" />
+        <bitfield pos="16" name="SNAPPAGE_CMD" />
+        <bitfield pos="17" name="SH_NO_INDEX_CONST_ON_A0" />
+        <bitfield pos="18" name="SH_NO_ONECONST_LIMIT" />
+        <bitfield pos="19" name="SH_IMG_LDST_ON_TEMP" />
+        <bitfield pos="20" name="COMPUTE_ONLY"/>
+        <bitfield pos="21" name="SH_IMG_LDST_CLAMP" />
+        <bitfield pos="22" name="SH_ICACHE_ALLOC_COUNT_FIX" />
+        <bitfield pos="23" name="SH_ICACHE_PREFETCH" />
+        <bitfield pos="24" name="PE2D_SEPARATE_CACHE" />
+        <bitfield pos="25" name="VG_AYUV_INPUT_OUTPUT" />
+        <bitfield pos="26" name="VG_DOUBLE_IMAGE" />
+        <bitfield pos="27" name="VG_RECTANGLE_STRIPE_MODE" />
+        <bitfield pos="28" name="VG_MMU" />
+        <bitfield pos="29" name="VG_IM_FILTER" />
+        <bitfield pos="30" name="VG_IM_YUV_PACKET" />
+        <bitfield pos="31" name="VG_IM_YUV_PLANAR" />
+    </bitset>
+    <bitset name="chipMinorFeatures9"> <!-- ETNA_GPU_FEATURES_10 -->
+        <bitfield pos="0" name="VG_PE_YUV_PACKET" />
+        <bitfield pos="1" name="VG_COLOR_PRECISION_8_BIT" />
+        <bitfield pos="2" name="PE_MSAA_OQ_FIX" />
+        <bitfield pos="3" name="PSIO_MSAA_CL_FIX" />
+        <bitfield pos="4" name="USC_DEFER_FILL_FIX" />
+        <bitfield pos="5" name="SH_CLOCK_GATE_FIX" />
+        <bitfield pos="6" name="FE_NEED_DUMMYDRAW" />
+        <bitfield pos="7" name="PE2D_LINEAR_YUV420_OUTPUT" />
+        <bitfield pos="8" name="PE2D_LINEAR_YUV420_10BIT" />
+        <bitfield pos="9" name="MULTI_CLUSTER" />
+        <bitfield pos="10" name="VG_TS_CULLING" />
+        <bitfield pos="11" name="VG_FP25" />
+        <bitfield pos="12" name="SH_MULTI_WG_PACK" />
+        <bitfield pos="13" name="SH_DUAL16_SAMPLEMASK_ZW" />
+        <bitfield pos="14" name="TPG_TRIVIAL_MODE_FIX" />
+        <bitfield pos="15" name="TX_ASTC_MULTISLICE_FIX" />
+        <bitfield pos="16" name="FE_ROBUST_FIX" />
+        <bitfield pos="17" name="SH_GPIPE_ACCESS_FULLTEMPS" />
+        <bitfield pos="18" name="PSIO_INTERLOCK" />
+        <bitfield pos="19" name="PA_WIDELINE_FIX" />
+        <bitfield pos="20" name="WIDELINE_HELPER_FIX" />
+        <bitfield pos="21" name="G2D_3RD_PARTY_COMPRESSION_1_1" />
+        <bitfield pos="22" name="TX_FLUSH_L1CACHE" />
+        <bitfield pos="23" name="PE_DITHER_FIX2" />
+        <bitfield pos="24" name="G2D_DEC400" />
+        <bitfield pos="25" name="SH_TEXLD_U_FIX" />
+        <bitfield pos="26" name="MC_FCCACHE_BYTEMASK" />
+        <bitfield pos="27" name="SH_MULTI_WG_PACK_FIX" />
+        <bitfield pos="28" name="DC_OVERLAY_SCALING" />
+        <bitfield pos="29" name="DC_SOURCE_ROTATION" />
+        <bitfield pos="30" name="DC_TILED" />
+        <bitfield pos="31" name="DC_YUV_L1" />
+    </bitset>
+    <bitset name="chipMinorFeatures10"> <!-- ETNA_GPU_FEATURES_11 -->
+        <bitfield pos="0" name="DC_D30_OUTPUT" />
+        <bitfield pos="1" name="DC_MMU" />
+        <bitfield pos="2" name="DC_COMPRESSION" />
+        <bitfield pos="3" name="DC_QOS" />
+        <bitfield pos="4" name="PE_ADVANCE_BLEND_PART0" />
+        <bitfield pos="5" name="FE_PATCHLIST_FETCH_FIX" />
+        <bitfield pos="6" name="RA_CG_FIX" />
+        <bitfield pos="7" name="EVIS_VX2" />
+        <bitfield pos="8" name="NN_FLOAT" />
+        <bitfield pos="9" name="DEC400" />
+        <bitfield pos="10" name="LS_SUPPORT_PERCOMP_DEPENDENCY" />
+        <bitfield pos="11" name="TP_ENGINE" />
+        <bitfield pos="12" name="MULTI_CORE_BLOCK_SET_CONFIG2" />
+        <bitfield pos="13" name="PE_VMSAA_COVERAGE_CACHE_FIX" />
+        <bitfield pos="14" name="SECURITY_AHB" />
+        <bitfield pos="15" name="MULTICORE_SEMAPHORESTALL_V3" />
+        <bitfield pos="16" name="SMALLBATCH" />
+        <bitfield pos="17" name="SH_CMPLX" />
+        <bitfield pos="18" name="SH_IDIV0_SWZL_EHS" />
+        <bitfield pos="19" name="TX_LERP_LESS_BIT" />
+        <bitfield pos="20" name="SH_GM_ENDIAN" />
+        <bitfield pos="21" name="SH_GM_USC_UNALLOC" />
+        <bitfield pos="22" name="SH_END_OF_BB" />
+        <bitfield pos="23" name="VIP_V7" />
+        <bitfield pos="24" name="TX_BORDER_CLAMP_FIX" />
+        <bitfield pos="25" name="SH_IMG_LD_LASTPIXEL_FIX" />
+        <bitfield pos="26" name="ASYNC_BLT" />
+        <bitfield pos="27" name="ASYNC_FE_FENCE_FIX" />
+        <bitfield pos="28" name="PSCS_THROTTLE" />
+        <bitfield pos="29" name="SEPARATE_LS" />
+        <bitfield pos="30" name="MCFE" />
+        <bitfield pos="31" name="WIDELINE_TRIANGLE_EMU" />
+    </bitset>
+    <bitset name="chipMinorFeatures11"> <!-- ETNA_GPU_FEATURES_12 -->
+        <bitfield pos="0" name="VG_RESOLUTION_8K" />
+        <bitfield pos="1" name="FENCE_32BIT" />
+        <bitfield pos="2" name="FENCE_64BIT" />
+        <bitfield pos="3" name="NN_INTERLEVE8" />
+        <bitfield pos="4" name="TP_REORDER" />
+        <bitfield pos="5" name="PE_DEPTH_ONLY_OQFIX" />
+    </bitset>
 
 <domain name="VIVM" brief="GPU memory domain">
 </domain>
