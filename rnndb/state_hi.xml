@@ -302,6 +302,10 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="23" low="16" name="SEC_SAFE_ADDR_HIGH"/>
             <bitfield high="31" low="31" name="UNK31"/>
         </reg32>
+        <reg32 offset="0x003A4" name="SEC_COMMAND_CONTROL">
+            <bitfield high="15" low="0" name="PREFETCH" brief="Number of 64-bit words to fetch from the command buffer"/>
+            <bitfield pos="16" name="ENABLE" brief="Enable the command parser"/>
+        </reg32>
         <reg32 offset="0x003A8" name="AHB_CONTROL">
             <bitfield high="1" low="1" name="NONSEC_ACCESS"/>
         </reg32>
