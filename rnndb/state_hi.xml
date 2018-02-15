@@ -307,7 +307,8 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="16" name="ENABLE" brief="Enable the command parser"/>
         </reg32>
         <reg32 offset="0x003A8" name="AHB_CONTROL">
-            <bitfield high="1" low="1" name="NONSEC_ACCESS"/>
+            <bitfield pos="0" name="RESET"/> <!-- Self-clearing GPU reset -->
+            <bitfield pos="1" name="NONSEC_ACCESS"/>
         </reg32>
     </stripe>
 
