@@ -115,7 +115,7 @@ def parse_arguments():
             help='Input is in binary')
     parser.add_argument('-g', '--galcore', dest='galcore',
             default=False, action='store_const', const=True,
-            help='Input is in galcore dmesg format')
+            help='Input is in galcore or etnaviv dmesg format')
     parser.add_argument('--output-c', dest='output_c',
             default=False, action='store_const', const=True,
             help='Print command buffer emission in C format')
@@ -162,8 +162,11 @@ def main():
                 m = re.search('DMA Address 0x([0-9A-F]{8})', line)
                 if m:
                     tgtaddrs.add(int(m.group(1), 16))
-                m = re.search('([0-9A-F]{8}) : (([0-9A-F]{8} )*[0-9A-F]{8})$', line)
+                m = re.search('([0-9A-F]{8}) ?: (([0-9A-F]{8} )*[0-9A-F]{8})$', line, flags=re.IGNORECASE)
+                # Vendor kernel with vivante HAL
                 # [  309.029521] 3FD84000 : 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+                # Mainline kernel with etnaviv DRM
+                # [ 2121.178339] cmd 00000000: 380000c8 00000000 40000002 00000000
                 if m:
                     addr = int(m.group(1), 16)
                     for i,d in enumerate(m.group(2).split(' ')):
