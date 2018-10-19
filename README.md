@@ -8,7 +8,7 @@ not necessary to use this repository when building the driver.**
 
 Instead, use:
 
-- https://github.com/etnaviv/mesa - Mesa driver (not yet upstreamed)
+- https://cgit.freedesktop.org/mesa/mesa/ - Mesa driver (etnaviv was upstreamed)
 - https://cgit.freedesktop.org/mesa/drm/ - Libdrm (etnaviv was upstreamed)
 - A recent mainline linux kernel (etnaviv was upstreamed)
 
