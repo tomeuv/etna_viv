@@ -30,6 +30,8 @@ from PIL import Image
 # This is one of the Vivante supertiling layouts. Every number is a tile number in the
 # supertile for the tile at that x,y.
 supertile_layout = [
+# old tiling format:
+[
     [  0,   1,   8,   9,  16,  17,  24,  25,  32,  33,  40,  41,  48,  49,  56,  57],
     [  2,   3,  10,  11,  18,  19,  26,  27,  34,  35,  42,  43,  50,  51,  58,  59],
     [  4,   5,  12,  13,  20,  21,  28,  29,  36,  37,  44,  45,  52,  53,  60,  61],
@@ -46,6 +48,26 @@ supertile_layout = [
     [194, 195, 202, 203, 210, 211, 218, 219, 226, 227, 234, 235, 242, 243, 250, 251],
     [196, 197, 204, 205, 212, 213, 220, 221, 228, 229, 236, 237, 244, 245, 252, 253],
     [198, 199, 206, 207, 214, 215, 222, 223, 230, 231, 238, 239, 246, 247, 254, 255],
+],
+# new tiling format:
+[
+    [  0,   1,   4,   5,  16,  17,  20,  21,  64,  65,  68,  69,  80,  81,  84,  85],
+    [  2,   3,   6,   7,  18,  19,  22,  23,  66,  67,  70,  71,  82,  83,  86,  87],
+    [  8,   9,  12,  13,  24,  25,  28,  29,  72,  73,  76,  77,  88,  89,  92,  93],
+    [ 10,  11,  14,  15,  26,  27,  30,  31,  74,  75,  78,  79,  90,  91,  94,  95],
+    [ 32,  33,  36,  37,  48,  49,  52,  53,  96,  97, 100, 101, 112, 113, 116, 117],
+    [ 34,  35,  38,  39,  50,  51,  54,  55,  98,  99, 102, 103, 114, 115, 118, 119],
+    [ 40,  41,  44,  45,  56,  57,  60,  61, 104, 105, 108, 109, 120, 121, 124, 125],
+    [ 42,  43,  46,  47,  58,  59,  62,  63, 106, 107, 110, 111, 122, 123, 126, 127],
+    [128, 129, 132, 133, 144, 145, 148, 149, 192, 193, 196, 197, 208, 209, 212, 213],
+    [130, 131, 134, 135, 146, 147, 150, 151, 194, 195, 198, 199, 210, 211, 214, 215],
+    [136, 137, 140, 141, 152, 153, 156, 157, 200, 201, 204, 205, 216, 217, 220, 221],
+    [138, 139, 142, 143, 154, 155, 158, 159, 202, 203, 206, 207, 218, 219, 222, 223],
+    [160, 161, 164, 165, 176, 177, 180, 181, 224, 225, 228, 229, 240, 241, 244, 245],
+    [162, 163, 166, 167, 178, 179, 182, 183, 226, 227, 230, 231, 242, 243, 246, 247],
+    [168, 169, 172, 173, 184, 185, 188, 189, 232, 233, 236, 237, 248, 249, 252, 253],
+    [170, 171, 174, 175, 186, 187, 190, 191, 234, 235, 238, 239, 250, 251, 254, 255]
+]
 ]
 
 def parse_arguments():
@@ -63,8 +85,8 @@ def parse_arguments():
             default=False, action='store_true',
             help='Tile instead of detile')
     parser.add_argument('-s', '--supertiled', dest='supertiled',
-            default=False, action='store_true',
-            help='Supertiled mode')
+            default=None, type=int,
+            help='Supertiled mode (layout 0 or 1)')
     parser.add_argument('--tile-width', dest='tile_width', type=int,
             default=4, help='Width of a tile')
     parser.add_argument('--tile-height', dest='tile_height', type=int,
@@ -123,9 +145,10 @@ def main():
     TILES_STRIDE = TILES_X * TILE_BYTES
     print('%dx%d %dx%d tiles' % (TILES_X,TILES_Y,TILE_WIDTH,TILE_HEIGHT))
 
-    if args.supertiled:
-        TILES_PER_SUPERTILE_W = len(supertile_layout[0])
-        TILES_PER_SUPERTILE_H = len(supertile_layout)
+    if args.supertiled is not None:
+        ln = supertile_layout[args.supertiled]
+        TILES_PER_SUPERTILE_W = len(ln[0])
+        TILES_PER_SUPERTILE_H = len(ln)
         SUPERTILE_WIDTH = TILES_PER_SUPERTILE_W * TILE_WIDTH
         SUPERTILE_HEIGHT = TILES_PER_SUPERTILE_H * TILE_HEIGHT
         SUPERTILES_X = width // SUPERTILE_WIDTH
@@ -138,7 +161,7 @@ def main():
                 for ty in range(0, TILES_PER_SUPERTILE_H):
                     for tx in range(0, TILES_PER_SUPERTILE_W):
                         do_tile(args.tile, out, data,
-                                inofs_st + supertile_layout[ty][tx] * TILE_BYTES,
+                                inofs_st + ln[ty][tx] * TILE_BYTES,
                                 sx * SUPERTILE_WIDTH + tx * TILE_WIDTH,
                                 sy * SUPERTILE_HEIGHT + ty * TILE_HEIGHT,
                                 width, TILE_WIDTH, TILE_HEIGHT, PIXEL_SIZE)
