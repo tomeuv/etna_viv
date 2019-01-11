@@ -1103,16 +1103,23 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 
     <stripe name="YUV" brief="YUV tiler states">
         <doc>The YUV tiler can combine planar YUV formats to RGB or non-planar YUV formats.</doc>
-        <reg32 offset="0x01678" name="UNK01678" value="0x00000000"/>
-        <reg32 offset="0x0167C" name="UNK0167C" value="0x00000000"/>
-        <reg32 offset="0x01680" name="UNK01680" value="0x00000000" type="VIVM"/>
-        <reg32 offset="0x01684" name="UNK01684" value="0x00000000"/>
-        <reg32 offset="0x01688" name="UNK01688" value="0x00000000" type="VIVM"/>
-        <reg32 offset="0x0168C" name="UNK0168C" value="0x00000000"/>
-        <reg32 offset="0x01690" name="UNK01690" value="0x00000000" type="VIVM"/>
-        <reg32 offset="0x01694" name="UNK01694" value="0x00000000"/>
-        <reg32 offset="0x01698" name="UNK01698" value="0x00000000" type="VIVM"/>
-        <reg32 offset="0x0169C" name="UNK0169C" value="0x00000000"/>
+        <reg32 offset="0x01678" name="CONFIG" value="0x00000000">
+            <bitfield pos="0" name="ENABLE"/>
+            <bitfield high="5" low="4" name="SOURCE_FORMAT" type="uint" brief="Source yuv format"/>
+            <bitfield pos="8" name="UV_SWAP"/>
+        </reg32>
+        <reg32 offset="0x0167C" name="WINDOW_SIZE" value="0x00000000">
+            <bitfield high="31" low="16" name="HEIGHT" type="uint"/>
+            <bitfield high="15" low="0" name="WIDTH" type="uint"/>
+        </reg32>
+        <reg32 offset="0x01680" name="Y_BASE" value="0x00000000" type="VIVM"/>
+        <reg32 offset="0x01684" name="Y_STRIDE" value="0x00000000"/>
+        <reg32 offset="0x01688" name="U_BASE" value="0x00000000" type="VIVM"/>
+        <reg32 offset="0x0168C" name="U_STRIDE" value="0x00000000"/>
+        <reg32 offset="0x01690" name="V_BASE" value="0x00000000" type="VIVM"/>
+        <reg32 offset="0x01694" name="V_STRIDE" value="0x00000000"/>
+        <reg32 offset="0x01698" name="DEST_BASE" value="0x00000000" type="VIVM"/>
+        <reg32 offset="0x0169C" name="DEST_STRIDE" value="0x00000000"/>
     </stripe>
 
     <stripe name="TE" brief="TExture sampler states">
