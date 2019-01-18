@@ -150,6 +150,10 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="0" name="128"/>
         <value value="1" name="256"/>
     </enum>
+    <enum name="TEXTURE_ADDRESSING_MODE">
+        <value value="0" name="TILED"/>
+        <value value="3" name="LINEAR"/>
+    </enum>
 
     <!-- register descriptions shared between TE.SAMPLER and NTE.SAMPLER 
          and texture descriptors
@@ -165,6 +169,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield high="12" low="11" name="MAG" type="TEXTURE_FILTER" brief="Filter for magnification"/>
         <bitfield high="17" low="13" name="FORMAT" type="TEXTURE_FORMAT"/>
         <bitfield high="19" low="19" name="ROUND_UV"/>
+        <bitfield high="21" low="20" name="ADDRESSING_MODE" type="TEXTURE_ADDRESSING_MODE"/>
         <bitfield high="23" low="22" name="ENDIAN" type="ENDIAN_MODE"/>
         <bitfield high="31" low="24" name="ANISOTROPY" type="fixedp">
             <doc>Logarithm of size of anisotropic filter, in 3.5 format.</doc>
