@@ -223,7 +223,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             2D array: TEXTURE_TYPE_3D
             </doc>
         </bitfield>
-        <bitfield pos="25" name="UNK25"/> <!-- Sometimes set by blob on gc3000, apparently always set on gc7000 -->
+        <bitfield pos="25" name="SEAMLESS_CUBE_MAP"/>
         <bitfield high="28" low="26" name="HALIGN" type="TEXTURE_HALIGN"/>
         <bitfield pos="30" name="USE_TS"/> <!-- Use texture TS? -->
     </bitset>
