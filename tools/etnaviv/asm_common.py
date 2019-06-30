@@ -83,8 +83,8 @@ def extract_imm(fields, idx):
             return rawval - 0x100000
     elif conv == 2: # u32
         return rawval
-    else:
-        return '0x%05' % rawval
+    else: # raw 16-bit, float or integer
+        return '0x%05X(%f)' % (rawval, int_as_float(rawval, 16))
 
 def set_imm(fields, idx, value):
     '''
