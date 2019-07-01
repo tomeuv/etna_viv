@@ -820,8 +820,8 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="15" low="8" name="WRITE_MASK_BACK" brief="glStencilMask (GL_BACK)"/>
         </reg32>
         <reg32 offset="0x014BC" name="MEM_CONFIG"> <!-- HALTI3 -->
-            <bitfield pos="24" name="COLOR_CACHE_MODE" type="TS_CACHE_MODE"/>
-            <bitfield pos="26" name="DEPTH_CACHE_MODE" type="TS_CACHE_MODE"/>
+            <bitfield pos="24" name="COLOR_TS_MODE" type="TS_MODE"/>
+            <bitfield pos="26" name="DEPTH_TS_MODE" type="TS_MODE"/>
         </reg32>
         <reg32 offset="0x014C0" name="HALTI4_UNK014C0"/> <!-- HALTI4 -->
         <reg32 offset="0x014C4" name="ROBUSTNESS_UNK014C4"/> <!-- ROBUSTNESS -->

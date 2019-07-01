@@ -64,7 +64,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield high="12" low="11" name="SWIZ_G" type="TEXTURE_SWIZZLE"/>
         <bitfield high="14" low="13" name="SWIZ_B" type="TEXTURE_SWIZZLE"/>
         <bitfield high="16" low="15" name="SWIZ_A" type="TEXTURE_SWIZZLE"/>
-        <bitfield pos="17" name="CACHE_MODE" type="TS_CACHE_MODE"/>
+        <bitfield pos="17" name="TS_MODE" type="TS_MODE"/>
         <bitfield pos="19" name="FLIP_Y"/> <!-- only works on DEST -->
         <bitfield pos="21" name="FROM_SUPER_TILED"/>
         <bitfield pos="22" name="UNK22"/> <!-- also affects tiling - set on IMAGE_COPY on DEST -->
@@ -171,7 +171,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="5" name="UNK5"/> <!-- messes up tiling -->
             <bitfield pos="6" name="UNK6"/> <!-- messes up tiling too -->
             <bitfield high="9" low="7" name="CLEAR_BPP"/> <!-- bytes per pixel-1, on CLEAR -->
-            <bitfield pos="10" name="INPLACE_CACHE_MODE" type="TS_CACHE_MODE"/>
+            <bitfield pos="10" name="INPLACE_TS_MODE" type="TS_MODE"/>
             <bitfield pos="11" name="INPLACE_BOTH" brief="Use both dest TS clear values, interleaved"/>
             <bitfield high="17" low="15" name="INPLACE_BPP">
                 <value value="0" name="1"/>

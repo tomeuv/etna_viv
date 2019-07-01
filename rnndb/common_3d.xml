@@ -146,9 +146,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="3" name="SPLIT_TILED"/>
         <value value="4" name="SPLIT_SUPER_TILED"/>
     </enum>
-    <enum name="TS_CACHE_MODE" brief="Bytes per TS tile">
-        <value value="0" name="128"/>
-        <value value="1" name="256"/>
+    <enum name="TS_MODE" brief="Pixels per TS tile">
+        <value value="0" name="32"/>
+        <value value="1" name="64"/>
     </enum>
     <enum name="TEXTURE_ADDRESSING_MODE">
         <value value="0" name="TILED"/>
@@ -216,7 +216,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield high="14" low="12" name="SWIZZLE_G" type="TEXTURE_SWIZZLE"/>
         <bitfield high="18" low="16" name="SWIZZLE_B" type="TEXTURE_SWIZZLE"/>
         <bitfield high="22" low="20" name="SWIZZLE_A" type="TEXTURE_SWIZZLE"/>
-        <bitfield pos="23" name="CACHE_MODE" type="TS_CACHE_MODE"/>
+        <bitfield pos="23" name="TS_MODE" type="TS_MODE"/>
         <bitfield pos="24" name="TEXTURE_ARRAY">
             <doc>
             1D array: TEXTURE_TYPE_2D
