@@ -1069,8 +1069,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         </reg32>
         <stripe name="SAMPLER" length="8" stride="4"> <!-- Tile status for samplers -->
             <reg32 offset="0x01720" name="CONFIG" value="0x00000000">
-                <bitfield high="1" low="0" name="ENABLE"/>
-                <bitfield high="7" low="4" name="FORMAT" type="COMPRESSION_FORMAT"/>
+                <bitfield pos="0" name="ENABLE"/>
+                <bitfield pos="1" name="COMPRESSION"/>
+                <bitfield high="7" low="4" name="COMPRESSION_FORMAT" type="COMPRESSION_FORMAT"/>
                 <bitfield high="13" low="11" name="UNK11"/>
             </reg32>
             <reg32 offset="0x01740" name="STATUS_BASE" value="0x00000000" type="VIVM"/>
@@ -1194,7 +1195,8 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 </doc>
             </reg32>
             <reg32 offset="0x15E00" name="TX_CTRL">
-                <bitfield high="1" low="0" name="TS_ENABLE"/> <!-- Set to 3 if texture TS, 0 otherwise -->
+                <bitfield pos="0" name="TS_MODE" type="TS_MODE"/>
+                <bitfield pos="1" name="TS_ENABLE"/>
                 <bitfield high="4" low="2" name="TS_INDEX" brief="Index in TS.SAMPLER[...]"/>
             </reg32>
             <reg32 offset="0x16000" name="SAMP_CTRL0_MIRROR"/> <!-- MIRROR of 16C00 -->
