@@ -35,6 +35,7 @@ BY_VERSION={
     (5,0,11,41671): 'gcs_hal_interface_imx6_v5_0_11_p8_41671.json',
     (6,2,3,129602): 'gcs_hal_interface_imx8_v6.2.3.129602.json',
     (6,2,2,93313): 'gcs_hal_interface_imx6_v6.2.2.93313.json',
+    (6,2,4,190076): 'gcs_hal_interface_imx8_v6.2.4.190076.json',
 
 }
 
