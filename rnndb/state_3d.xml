@@ -1045,7 +1045,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="11" low="8" name="COLOR_COMPRESSION_FORMAT" type="COMPRESSION_FORMAT"/>
             <bitfield pos="12" name="UNK12"/> <!-- likely has to do with hdepth HDEPTH_FAST_CLEAR? -->
             <bitfield pos="13" name="HDEPTH_AUTO_DISABLE" brief="Auto disable fast clear for hdepth"/>
-            <bitfield pos="14" name="UNK14"/> <!-- Sometimes set on GC7000L -->
+            <bitfield pos="14" name="STENCIL_ENABLE"/> <!-- GC7000L - only required when depth compression is on? -->
             <bitfield pos="21" name="UNK21"/> <!-- Set by default in new context w/ Vivante kernel driver -->
         </reg32>
         <reg32 offset="0x01658" name="COLOR_STATUS_BASE" brief="Color tile status base address" value="0x00000000" type="VIVM"/>
