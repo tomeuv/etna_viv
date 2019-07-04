@@ -146,9 +146,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="3" name="SPLIT_TILED"/>
         <value value="4" name="SPLIT_SUPER_TILED"/>
     </enum>
-    <enum name="TS_MODE" brief="Pixels per TS tile">
-        <value value="0" name="32"/>
-        <value value="1" name="64"/>
+    <enum name="TS_MODE" brief="Bytes per TS tile">
+        <value value="0" name="128B"/>
+        <value value="1" name="256B"/>
     </enum>
     <enum name="TEXTURE_ADDRESSING_MODE">
         <value value="0" name="TILED"/>
