@@ -784,6 +784,11 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <!-- Global PE state not related to logic operations but "conveniently"
                  squashed into this register.
             -->
+            <!-- not sure what DITHER_MODE does, but blob always sets it to 2 or 3, and it is related to dithering
+                 if its 0 on GC2000/GC3000, alpha blending with gl_FragColor = (1.0, 1.0, 1.0, 0.0) and dithering on,
+                 whitens instead of having no effect. maybe one bit is for color and one for alpha?
+            -->
+            <bitfield high="6" low="5" name="DITHER_MODE"/>
             <bitfield pos="7" name="SINGLE_BUFFER_MASK"/>
             <!-- SINGLE_BUFFER is a feature, introduced in GC3000 on i.MX6qp, that allows
                  multiple pixel pipes to render to a single buffer. This is very useful:
@@ -797,7 +802,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                  depth and color.
             -->
             <bitfield high="9" low="8" name="SINGLE_BUFFER"/>
-            <bitfield pos="10" name="UNK11_MASK"/>
+            <bitfield pos="10" name="DITHER_MODE_MASK"/>
             <bitfield pos="11" name="UNK11"/> <!-- Alpha related -->
             <bitfield high="21" low="20" name="UNK20"/> <!-- Depth related -->
             <bitfield pos="23" name="UNK20_MASK"/>
