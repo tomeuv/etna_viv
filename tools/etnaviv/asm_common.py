@@ -206,7 +206,7 @@ def disassemble(isa, dialect, inst, warnings):
 
     # Unknown fields -- will warn if these are not 0
     unknowns = [
-        ('bit_3_31', fields['UNK3_31'])
+        ('bit_3_31', fields['DST_FULL'])
     ]
 
     if not (dialect.flags & Flags.DUAL16):
