@@ -404,7 +404,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <stripe name="VERTEX_STREAMS" length="16" stride="4"> <!-- streamCount > 8 || HALTI2 -->
             <reg32 offset="0x14600" name="BASE_ADDR" value="0x00000000" type="VIVM"/>
             <reg32 offset="0x14640" name="CONTROL" value="0x00000000" type="FE_VERTEX_STREAM_CONTROL"/>
-            <reg32 offset="0x14680" name="UNK14680" value="0x00000000"/>
+            <reg32 offset="0x14680" name="VERTEX_DIVISOR" value="0x00000000"/>
             <reg32 offset="0x146C0" name="ROBUSTNESS_UNK146C0" type="VIVM"/> <!-- ROBUSTNESS -->
         </stripe>
         <stripe name="GENERIC_ATTRIB" length="32" stride="4"> <!-- HALTI5 -->
