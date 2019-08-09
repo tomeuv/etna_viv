@@ -230,7 +230,13 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             </reg32>
         </stripe>
         <!-- 007C4 is vertex attribute related -->
-        <reg32 offset="0x007C4" name="HALTI5_UNK007C4"/> <!-- HALTI5 -->
+        <reg32 offset="0x007C4" name="HALTI5_ID_CONFIG">
+            <bitfield pos="0" name="VERTEX_ID_ENABLE"/>
+            <bitfield pos="1" name="INSTANCE_ID_ENABLE"/>
+            <!-- register id is per component (ex: value 5 means t1.y) -->
+            <bitfield high="15" low="8" name="VERTEX_ID_REG" type="uint"/>
+            <bitfield high="23" low="16" name="INSTANCE_ID_REG" type="uint"/>
+        </reg32>
         <reg32 offset="0x007D0" name="HALTI5_UNK007D0" length="2" stride="4"/> <!-- HALTI5 -->
         <reg32 offset="0x007D8" name="HALTI5_UNK007D8"/> <!-- HALTI5 -->
         <!-- Asynchronous command execution -->
