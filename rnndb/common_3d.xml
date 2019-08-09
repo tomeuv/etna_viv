@@ -155,7 +155,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="3" name="LINEAR"/>
     </enum>
 
-    <!-- register descriptions shared between TE.SAMPLER and NTE.SAMPLER 
+    <!-- register descriptions shared between TE.SAMPLER and NTE.SAMPLER
          and texture descriptors
     -->
     <bitset name="TE_SAMPLER_CONFIG0" inline="yes">

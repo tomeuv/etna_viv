@@ -189,10 +189,10 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="31" low="16" name="HIGH" brief="Index of last VS instruction"/>
         </reg32>
         <!-- The following register is set to the Vivante driver to:
-             - Rendering on GC2000: 
+             - Rendering on GC2000:
                - 0x00000000  Before loading VS uniform / code
                - 0x00000011  Before loading PS uniform / code
-             - Rendering on GC3000: 
+             - Rendering on GC3000:
                - 0x00000001  Before loading VS uniform
                - 0x00000000  Before loading VS code
                - 0x00000011  Before loading PS uniform / code
@@ -248,7 +248,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="9" low="0" name="COUNT"/> <!-- Same as VS.OUTPUT_COUNT -->
 	    <bitfield high="18" low="8" name="B"/> <!-- = COUNT*0x10 -->
 	</reg32>
-        <!-- "new shader instruction PC registers (20 bit)" --> 
+        <!-- "new shader instruction PC registers (20 bit)" -->
         <reg32 offset="0x00874" name="NEWRANGE_LOW"/> <!-- HALTI5 || ICACHE -->
         <reg32 offset="0x00878" name="HALTI5_UNK00878"/> <!-- !HALTI5 && ICACHE "VS/PS Start/End PC register" -->
         <reg32 offset="0x00880" name="HALTI5_UNK00880"/> <!-- !HALTI5 && ICACHE "VS/PS Start/End PC register" -->
@@ -815,7 +815,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         </reg32>
         <reg32 offset="0x014A8" name="DITHER" value="0xFFFFFFFF" length="2"/>
         <reg32 offset="0x014B0" name="ALPHA_COLOR_EXT0" value="0x00000000" brief="High-precision alpha blend color"> <!--HALF_FLOAT_PIPE-->
-            <bitfield high="15" low="0" name="B" type="float"/> <!-- 16-bit float --> 
+            <bitfield high="15" low="0" name="B" type="float"/> <!-- 16-bit float -->
             <bitfield high="31" low="16" name="G" type="float"/> <!-- 16-bit float -->
         </reg32>
         <reg32 offset="0x014B4" name="ALPHA_COLOR_EXT1" value="0x00000000" brief="High-precision alpha blend color"> <!--HALF_FLOAT_PIPE-->

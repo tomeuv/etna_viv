@@ -361,7 +361,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 
             The period of the cosine is 4 and not 2 PI, thus to get normal behavior the instruction
             should be prefixed by a division by PI/2.
-            
+
             Note: on GC2000 the src register cannot be the same as dst. This limitation does not
             appear to exist on GC3000.
 
