@@ -78,7 +78,17 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="13" name="CONSTANT_COLOR"/>
         <value value="14" name="ONE_MINUS_CONSTANT_COLOR"/>
     </enum>
-    <enum name="RS_FORMAT" brief="Resolve/render pixel format">
+    <enum name="RS_FORMAT" brief="Resolve pixel format">
+        <value value="0" name="X4R4G4B4"/>
+        <value value="1" name="A4R4G4B4"/>
+        <value value="2" name="X1R5G5B5"/>
+        <value value="3" name="A1R5G5B5"/>
+        <value value="4" name="R5G6B5"/>
+        <value value="5" name="X8R8G8B8"/>
+        <value value="6" name="A8R8G8B8"/>
+        <value value="7" name="YUY2"/><!-- only supported with YUY2_AVERAGING -->
+    </enum>
+    <enum name="PE_FORMAT" brief="Render pixel format">
         <value value="0" name="X4R4G4B4"/>
         <value value="1" name="A4R4G4B4"/>
         <value value="2" name="X1R5G5B5"/>
@@ -738,7 +748,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="31" name="EQ_ALPHA_MASK"/>
         </reg32>
         <reg32 offset="0x0142C" name="COLOR_FORMAT" value="0x00000000">
-            <bitfield high="3" low="0" name="FORMAT" type="RS_FORMAT"/>
+            <bitfield high="3" low="0" name="FORMAT" type="PE_FORMAT"/>
             <bitfield pos="4" name="FORMAT_MASK"/>
             <bitfield high="11" low="8" name="COMPONENTS" type="RGBA_BITS" brief="glColorMask"/>
             <bitfield pos="13" name="SUPER_TILED_NEW"/> <!-- GC7000 uses this to determine whether to supertile -->
@@ -750,7 +760,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <!-- Vivante driver on GC2000/GC3000/GC7000 specifies output format here and sets
                  FORMAT to 0 and FORMAT_MASK to 1.
               -->
-            <bitfield high="30" low="24" name="FORMAT_EXT" type="RS_FORMAT"/>
+            <bitfield high="30" low="24" name="FORMAT_EXT" type="PE_FORMAT"/>
             <bitfield pos="31" name="FORMAT_EXT_MASK"/>
         </reg32>
         <reg32 offset="0x01430" name="COLOR_ADDR" value="0x00000000" type="VIVM"/> <!-- pixelPipes == 1 -->
