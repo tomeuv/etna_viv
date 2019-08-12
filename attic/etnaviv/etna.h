@@ -311,7 +311,7 @@ static inline void etna_draw_indexed_primitives(struct etna_ctx *cmdbuf, uint32_
 {
 #ifdef CMD_DEBUG
     printf("draw_primitives_indexed %08x %08x %08x %08x\n",
-            VIV_FE_DRAW_PRIMITIVES_HEADER_OP_DRAW_INDEXED_PRIMITIVES,
+            VIV_FE_DRAW_INDEXED_PRIMITIVES_HEADER_OP_DRAW_INDEXED_PRIMITIVES,
             primitive_type, start, count);
 #endif
     etna_reserve(cmdbuf, 5+1);
