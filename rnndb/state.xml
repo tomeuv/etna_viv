@@ -86,6 +86,8 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="3" name="UNSIGNED_SHORT"/>
         <value value="4" name="INT"/>
         <value value="5" name="UNSIGNED_INT"/>
+        <value value="6" name="INT_2_10_10_10_REV"/>
+        <value value="7" name="UNSIGNED_INT_2_10_10_10_REV"/>
         <value value="8" name="FLOAT"/> <!-- Also used for int using glVertexAttribIPointer -->
         <value value="9" name="HALF_FLOAT"/>
         <value value="11" name="FIXED" brief="16.16 fixed point"/>
@@ -113,6 +115,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             </bitfield>
             <bitfield high="15" low="14" name="NORMALIZE" brief="Normalize to 0..1">
                 <value value="0" name="OFF"/>
+                <value value="1" name="SIGN_EXTEND"/> <!-- also used for R10G10B10A2_SNORM, for reason unknown -->
                 <value value="2" name="ON"/>
             </bitfield>
             <bitfield high="23" low="16" name="START" brief="Starting offset of element data"/>
@@ -227,7 +230,13 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             </reg32>
         </stripe>
         <!-- 007C4 is vertex attribute related -->
-        <reg32 offset="0x007C4" name="HALTI5_UNK007C4"/> <!-- HALTI5 -->
+        <reg32 offset="0x007C4" name="HALTI5_ID_CONFIG">
+            <bitfield pos="0" name="VERTEX_ID_ENABLE"/>
+            <bitfield pos="1" name="INSTANCE_ID_ENABLE"/>
+            <!-- register id is per component (ex: value 5 means t1.y) -->
+            <bitfield high="15" low="8" name="VERTEX_ID_REG" type="uint"/>
+            <bitfield high="23" low="16" name="INSTANCE_ID_REG" type="uint"/>
+        </reg32>
         <reg32 offset="0x007D0" name="HALTI5_UNK007D0" length="2" stride="4"/> <!-- HALTI5 -->
         <reg32 offset="0x007D8" name="HALTI5_UNK007D8"/> <!-- HALTI5 -->
         <!-- Asynchronous command execution -->
@@ -395,7 +404,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <stripe name="VERTEX_STREAMS" length="16" stride="4"> <!-- streamCount > 8 || HALTI2 -->
             <reg32 offset="0x14600" name="BASE_ADDR" value="0x00000000" type="VIVM"/>
             <reg32 offset="0x14640" name="CONTROL" value="0x00000000" type="FE_VERTEX_STREAM_CONTROL"/>
-            <reg32 offset="0x14680" name="UNK14680" value="0x00000000"/>
+            <reg32 offset="0x14680" name="VERTEX_DIVISOR" value="0x00000000"/>
             <reg32 offset="0x146C0" name="ROBUSTNESS_UNK146C0" type="VIVM"/> <!-- ROBUSTNESS -->
         </stripe>
         <stripe name="GENERIC_ATTRIB" length="32" stride="4"> <!-- HALTI5 -->

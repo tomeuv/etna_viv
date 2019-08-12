@@ -78,7 +78,17 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="13" name="CONSTANT_COLOR"/>
         <value value="14" name="ONE_MINUS_CONSTANT_COLOR"/>
     </enum>
-    <enum name="RS_FORMAT" brief="Resolve/render pixel format">
+    <enum name="RS_FORMAT" brief="Resolve pixel format">
+        <value value="0" name="X4R4G4B4"/>
+        <value value="1" name="A4R4G4B4"/>
+        <value value="2" name="X1R5G5B5"/>
+        <value value="3" name="A1R5G5B5"/>
+        <value value="4" name="R5G6B5"/>
+        <value value="5" name="X8R8G8B8"/>
+        <value value="6" name="A8R8G8B8"/>
+        <value value="7" name="YUY2"/><!-- only supported with YUY2_AVERAGING -->
+    </enum>
+    <enum name="PE_FORMAT" brief="Render pixel format">
         <value value="0" name="X4R4G4B4"/>
         <value value="1" name="A4R4G4B4"/>
         <value value="2" name="X1R5G5B5"/>
@@ -127,6 +137,20 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="13" name="OR_REVERSE"/>
         <value value="14" name="OR"/>
         <value value="15" name="SET"/>
+    </enum>
+    <enum name="COLOR_OUTPUT_MODE">
+        <value value="0" name="NORMAL"/>
+        <!-- these values seem to bypass blend, which only works with 16-bit and no integers
+             -with value 0, only 16 incorrect LSBs are written in the output channels
+             -not sure what is actually different between these values, since PE format
+              should contain this information??
+        -->
+        <value value="1" name="A2B10G10R10UI"/>
+        <value value="2" name="UIF32"/>
+        <value value="3" name="U8"/>
+        <value value="4" name="U16"/>
+        <value value="5" name="I8"/>
+        <value value="6" name="I16"/>
     </enum>
 
     <bitset name="VARYING_NUM_COMPONENTS">
@@ -189,10 +213,10 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="31" low="16" name="HIGH" brief="Index of last VS instruction"/>
         </reg32>
         <!-- The following register is set to the Vivante driver to:
-             - Rendering on GC2000: 
+             - Rendering on GC2000:
                - 0x00000000  Before loading VS uniform / code
                - 0x00000011  Before loading PS uniform / code
-             - Rendering on GC3000: 
+             - Rendering on GC3000:
                - 0x00000001  Before loading VS uniform
                - 0x00000000  Before loading VS code
                - 0x00000011  Before loading PS uniform / code
@@ -248,7 +272,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="9" low="0" name="COUNT"/> <!-- Same as VS.OUTPUT_COUNT -->
 	    <bitfield high="18" low="8" name="B"/> <!-- = COUNT*0x10 -->
 	</reg32>
-        <!-- "new shader instruction PC registers (20 bit)" --> 
+        <!-- "new shader instruction PC registers (20 bit)" -->
         <reg32 offset="0x00874" name="NEWRANGE_LOW"/> <!-- HALTI5 || ICACHE -->
         <reg32 offset="0x00878" name="HALTI5_UNK00878"/> <!-- !HALTI5 && ICACHE "VS/PS Start/End PC register" -->
         <reg32 offset="0x00880" name="HALTI5_UNK00880"/> <!-- !HALTI5 && ICACHE "VS/PS Start/End PC register" -->
@@ -500,7 +524,11 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         </reg32>
         <reg32 offset="0x01010" name="CONTROL" value="0x00000000">
             <bitfield pos="0" name="BYPASS"/>
-            <bitfield pos="1" name="UNK1"/>
+            <bitfield pos="1" name="SATURATE_RT0"/> <!-- enable for unorm formats -->
+            <bitfield pos="2" name="SATURATE_RT1"/>
+            <bitfield pos="3" name="SATURATE_RT2"/>
+            <bitfield pos="4" name="SATURATE_RT3"/>
+            <bitfield high="10" low="8" name="RT_COUNT"/> <!-- number of render targets minus one -->
         </reg32>
         <reg32 offset="0x01014" name="PERF_COUNTER" brief="Performance counter control"/>
         <reg32 offset="0x01018" name="START_PC" value="0x01000000"/>
@@ -511,10 +539,21 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <!-- The following is used with unified uniforms (SH_UNIFORM_*) -->
         <reg32 offset="0x01024" name="UNIFORM_BASE" brief="Offset applied to PS uniform loads (granularity is 4-vectors)"/> <!-- -->
         <reg32 offset="0x01028" name="INST_ADDR" type="VIVM" brief="Memory address of shader instructions, must be aligned to 0x100"/> <!-- ICACHE -->
-        <reg32 offset="0x0102C" name="UNK0102C"/> <!-- numRT == 8 -->
+        <reg32 offset="0x0102C" name="CONTROL2">
+            <bitfield pos="7" name="SATURATE_RT4"/>
+            <bitfield pos="15" name="SATURATE_RT5"/>
+            <bitfield pos="23" name="SATURATE_RT6"/>
+            <bitfield pos="31" name="SATURATE_RT7"/>
+        </reg32>
         <reg32 offset="0x01030" name="CONTROL_EXT">
-            <!-- Not used for multiple render targets -->
-            <bitfield high="1" low="0" name="COLOR_OUTPUT_COUNT" brief="Number of outputs minus one"/>
+            <bitfield high="2" low="0" name="OUTPUT_MODE0" type="COLOR_OUTPUT_MODE"/>
+            <bitfield high="6" low="4" name="OUTPUT_MODE1" type="COLOR_OUTPUT_MODE"/>
+            <bitfield high="10" low="8" name="OUTPUT_MODE2" type="COLOR_OUTPUT_MODE"/>
+            <bitfield high="14" low="12" name="OUTPUT_MODE3" type="COLOR_OUTPUT_MODE"/>
+            <bitfield high="18" low="16" name="OUTPUT_MODE4" type="COLOR_OUTPUT_MODE"/>
+            <bitfield high="22" low="20" name="OUTPUT_MODE5" type="COLOR_OUTPUT_MODE"/>
+            <bitfield high="26" low="24" name="OUTPUT_MODE6" type="COLOR_OUTPUT_MODE"/>
+            <bitfield high="30" low="28" name="OUTPUT_MODE7" type="COLOR_OUTPUT_MODE"/>
         </reg32>
         <reg32 offset="0x01034" name="UNK01034"/> <!-- always 0x3f? -->
         <reg32 offset="0x01038" name="UNK01038"/> <!-- numRT == 8 -->
@@ -738,7 +777,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="31" name="EQ_ALPHA_MASK"/>
         </reg32>
         <reg32 offset="0x0142C" name="COLOR_FORMAT" value="0x00000000">
-            <bitfield high="3" low="0" name="FORMAT" type="RS_FORMAT"/>
+            <bitfield high="3" low="0" name="FORMAT" type="PE_FORMAT"/>
             <bitfield pos="4" name="FORMAT_MASK"/>
             <bitfield high="11" low="8" name="COMPONENTS" type="RGBA_BITS" brief="glColorMask"/>
             <bitfield pos="13" name="SUPER_TILED_NEW"/> <!-- GC7000 uses this to determine whether to supertile -->
@@ -750,7 +789,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <!-- Vivante driver on GC2000/GC3000/GC7000 specifies output format here and sets
                  FORMAT to 0 and FORMAT_MASK to 1.
               -->
-            <bitfield high="30" low="24" name="FORMAT_EXT" type="RS_FORMAT"/>
+            <bitfield high="30" low="24" name="FORMAT_EXT" type="PE_FORMAT"/>
             <bitfield pos="31" name="FORMAT_EXT_MASK"/>
         </reg32>
         <reg32 offset="0x01430" name="COLOR_ADDR" value="0x00000000" type="VIVM"/> <!-- pixelPipes == 1 -->
@@ -810,12 +849,12 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="23" name="UNK20_MASK"/>
             <bitfield high="26" low="24" name="UNK24"/> <!-- Sampling related (set on GC3000 but not GC2000) -->
             <bitfield pos="27" name="UNK24_MASK"/>
-            <bitfield pos="30" name="UNK31_MASK"/>
-            <bitfield pos="31" name="UNK31"/>
+            <bitfield pos="30" name="SRGB_MASK"/>
+            <bitfield pos="31" name="SRGB"/> <!-- linear to sRGB convert output -->
         </reg32>
         <reg32 offset="0x014A8" name="DITHER" value="0xFFFFFFFF" length="2"/>
         <reg32 offset="0x014B0" name="ALPHA_COLOR_EXT0" value="0x00000000" brief="High-precision alpha blend color"> <!--HALF_FLOAT_PIPE-->
-            <bitfield high="15" low="0" name="B" type="float"/> <!-- 16-bit float --> 
+            <bitfield high="15" low="0" name="B" type="float"/> <!-- 16-bit float -->
             <bitfield high="31" low="16" name="G" type="float"/> <!-- 16-bit float -->
         </reg32>
         <reg32 offset="0x014B4" name="ALPHA_COLOR_EXT1" value="0x00000000" brief="High-precision alpha blend color"> <!--HALF_FLOAT_PIPE-->
@@ -842,15 +881,20 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x14900" name="RT_CONFIG" length="8" stride="4">
             <bitfield high="15" low="0" name="STRIDE"/>
             <!-- Likely per-output format flags -->
-            <bitfield high="31" low="16" name="UNK16"/>
+            <bitfield high="20" low="16" name="FORMAT" type="PE_FORMAT"/>
+            <bitfield pos="26" name="SUPER_TILED"/>
+            <bitfield pos="28" name="UNK28"/>
         </reg32>
 
-        <!-- Probably extra per-RT state -->
-        <reg32 offset="0x14920" name="HALTI5_UNK14920" length="7" stride="4"/> <!-- HALTI5 -->
-        <reg32 offset="0x14940" name="HALTI5_UNK14940" length="7" stride="4"/> <!-- HALTI5 -->
-        <reg32 offset="0x14960" name="HALTI5_UNK14960" length="7" stride="4"/> <!-- HALTI5 -->
-        <reg32 offset="0x14980" name="HALTI5_UNK14980" length="7" stride="4"/> <!-- HALTI5 -->
-        <reg32 offset="0x149A0" name="HALTI5_UNK149A0" length="7" stride="4"/> <!-- HALTI5 -->
+        <!-- HALTI5 extra per-RT state -->
+        <reg32 offset="0x14920" name="HALTI5_UNK14920" length="7" stride="4">
+            <bitfield high="7" low="4" name="COMPONENTS" type="RGBA_BITS"/>
+            <bitfield pos="8" name="UNK8"/>
+        </reg32>
+        <reg32 offset="0x14940" name="HALTI5_UNK14940" length="7" stride="4"/>
+        <reg32 offset="0x14960" name="HALTI5_UNK14960" length="7" stride="4"/>
+        <reg32 offset="0x14980" name="HALTI5_UNK14980" length="7" stride="4"/>
+        <reg32 offset="0x149A0" name="HALTI5_UNK149A0" length="7" stride="4"/>
 
         <reg32 offset="0x149C0" name="ROBUSTNESS_UNK149C0" length="8" stride="4"/> <!-- ROBUSTNESS -->
     </stripe>
@@ -1220,6 +1264,17 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                     To disable mipmapping, set this to NONE as well as set the minimum and maximum LOD level to 0..0.
                 </bitfield>
                 <bitfield high="14" low="13" name="MAG" type="TEXTURE_FILTER" brief="Filter for magnification"/>
+                <bitfield pos="17" name="COMPARE_ENABLE" />
+                <bitfield high="20" low="18" name="COMPARE_FUNC" brief="For shadow sampler">
+                    <value value="0" name="LE"/>
+                    <value value="1" name="GE"/>
+                    <value value="2" name="LT"/>
+                    <value value="3" name="GT"/>
+                    <value value="4" name="EQ"/>
+                    <value value="5" name="NE"/>
+                    <value value="6" name="ALWAYS"/>
+                    <value value="7" name="NEVER"/>
+                </bitfield>
                 <bitfield pos="21" name="UNK21"/> <!-- always set? not setting this causes MMU errors -->
                 <bitfield pos="22" name="UNK22"/> <!-- setting causes MMU errors -->
                 <bitfield pos="23" name="RGB" brief="RGB color space"/> <!-- a la TE_SAMPLER_LOG_SIZE.RGB -->

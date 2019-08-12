@@ -361,7 +361,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 
             The period of the cosine is 4 and not 2 PI, thus to get normal behavior the instruction
             should be prefixed by a division by PI/2.
-            
+
             Note: on GC2000 the src register cannot be the same as dst. This limitation does not
             appear to exist on GC3000.
 
@@ -375,6 +375,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             - TEX.AMODE needs to be set to 1
         </doc>
     </value>
+    <value value="0x24" name="BRANCH2" /> <!-- not sure how this is different from normal branch. seen it used for ball_iequal2 by blob -->
     <value value="0x25" name="FLOOR" brief="Largest integral value not greater than the argument"> <!-- HAS_SIGN_FLOOR_CEIL -->
         <doc>
             dst := floor(src2)
@@ -496,7 +497,14 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
     <value value="0x46" name="IDIV2"/> <!-- unverified -->
     <value value="0x47" name="IDIV3"/> <!-- unverified -->
     <value value="0x48" name="IMOD0"/> <!-- unverified -->
-    <value value="0x49" name="IMOD1"/> <!-- unverified -->
+    <value value="0x49" name="TEXELFETCH"> <!-- unverified -->
+        <doc>
+            on GC7000L:
+            src0: texture coordinates, integer
+            src1: lod, float (unlike the GLSL function which takes integer)
+            src2: 0x1100 (something to do with multisampling)?
+        </doc>
+    </value>
     <value value="0x4A" name="IMOD2"/> <!-- unverified -->
     <value value="0x4B" name="IMOD3"/> <!-- unverified -->
     <value value="0x4C" name="IMADLO0" brief="Integer multiply and add">

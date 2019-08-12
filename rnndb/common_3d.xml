@@ -155,7 +155,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="3" name="LINEAR"/>
     </enum>
 
-    <!-- register descriptions shared between TE.SAMPLER and NTE.SAMPLER 
+    <!-- register descriptions shared between TE.SAMPLER and NTE.SAMPLER
          and texture descriptors
     -->
     <bitset name="TE_SAMPLER_CONFIG0" inline="yes">
@@ -239,8 +239,8 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
     <bitset name="TE_SAMPLER_CONFIG2"> <!-- contains SAMPLER_MODE -->
         <bitfield pos="16" name="UNK16"/> <!-- always set? -->
         <bitfield pos="17" name="UNK17"/> <!-- always set? -->
-        <bitfield pos="18" name="UNK18"/>
-        <bitfield pos="19" name="UNK19"/>
+        <bitfield pos="18" name="SIGNED_INT8"/> <!-- sign extend 8-bit -->
+        <bitfield pos="19" name="SIGNED_INT16"/> <!-- sign extend 16-bit -->
         <bitfield pos="23" name="UNK23"/>
     </bitset>
     <bitset name="TE_SAMPLER_CONFIG3">
@@ -260,38 +260,25 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
     </enum>
 
     <enum name="TEXTURE_FORMAT_ASTC">
-        <value value="0x00" name="RGBA_4x4"/>
-        <value value="0x01" name="RGBA_5x4"/>
-        <value value="0x02" name="RGBA_5x5"/>
-        <value value="0x03" name="RGBA_6x5"/>
-        <value value="0x04" name="RGBA_6x6"/>
-        <value value="0x05" name="RGBA_8x5"/>
-        <value value="0x06" name="RGBA_8x6"/>
-        <value value="0x07" name="RGBA_8x8"/>
-        <value value="0x08" name="RGBA_10x5"/>
-        <value value="0x09" name="RGBA_10x6"/>
-        <value value="0x0a" name="RGBA_10x8"/>
-        <value value="0x0b" name="RGBA_10x10"/>
-        <value value="0x0c" name="RGBA_12x10"/>
-        <value value="0x0d" name="RGBA_12x12"/>
-        <value value="0x10" name="SRGB8_ALPHA8_4x4"/>
-        <value value="0x11" name="SRGB8_ALPHA8_5x4"/>
-        <value value="0x12" name="SRGB8_ALPHA8_5x5"/>
-        <value value="0x13" name="SRGB8_ALPHA8_6x5"/>
-        <value value="0x14" name="SRGB8_ALPHA8_6x6"/>
-        <value value="0x15" name="SRGB8_ALPHA8_8x5"/>
-        <value value="0x16" name="SRGB8_ALPHA8_8x6"/>
-        <value value="0x17" name="SRGB8_ALPHA8_8x8"/>
-        <value value="0x18" name="SRGB8_ALPHA8_10x5"/>
-        <value value="0x19" name="SRGB8_ALPHA8_10x6"/>
-        <value value="0x1a" name="SRGB8_ALPHA8_10x8"/>
-        <value value="0x1b" name="SRGB8_ALPHA8_10x10"/>
-        <value value="0x1c" name="SRGB8_ALPHA8_12x10"/>
-        <value value="0x1d" name="SRGB8_ALPHA8_12x12"/>
+        <value value="0x0" name="RGBA_4x4"/>
+        <value value="0x1" name="RGBA_5x4"/>
+        <value value="0x2" name="RGBA_5x5"/>
+        <value value="0x3" name="RGBA_6x5"/>
+        <value value="0x4" name="RGBA_6x6"/>
+        <value value="0x5" name="RGBA_8x5"/>
+        <value value="0x6" name="RGBA_8x6"/>
+        <value value="0x7" name="RGBA_8x8"/>
+        <value value="0x8" name="RGBA_10x5"/>
+        <value value="0x9" name="RGBA_10x6"/>
+        <value value="0xa" name="RGBA_10x8"/>
+        <value value="0xb" name="RGBA_10x10"/>
+        <value value="0xc" name="RGBA_12x10"/>
+        <value value="0xd" name="RGBA_12x12"/>
     </enum>
 
     <bitset name="TE_SAMPLER_ASTC0" inline="yes">
-        <bitfield high="7" low="0" name="ASTC_FORMAT" type="TEXTURE_FORMAT_ASTC"/>
+        <bitfield high="3" low="0" name="ASTC_FORMAT" type="TEXTURE_FORMAT_ASTC"/>
+        <bitfield pos="4" name="ASTC_SRGB" />
         <bitfield high="15" low="8" name="UNK8"/> <!-- always 0x0c? -->
         <bitfield high="23" low="16" name="UNK16"/> <!-- always 0x0c? -->
         <bitfield high="31" low="24" name="UNK24"/> <!-- always 0x0c? -->
