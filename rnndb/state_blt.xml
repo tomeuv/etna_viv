@@ -51,7 +51,14 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="0x05" name="X8R8G8B8"/>
         <value value="0x06" name="A8R8G8B8"/>
         <value value="0x07" name="YUY2"/>
+        <value value="0x08" name="UYVY"/>
+        <value value="0x10" name="A8"/>
+        <value value="0x16" name="A2R10G10B10"/>
+        <value value="0x17" name="X24S8"/>
+        <value value="0x18" name="D16"/>
         <value value="0x1c" name="A16R16G16B16"/>
+        <value value="0x20" name="A8L8"/>
+        <value value="0x21" name="L8"/>
         <value value="0x22" name="R8G8B8"/> <!-- now that's old-school -->
         <value value="0x23" name="R8"/>
         <value value="0x24" name="R8G8"/>
