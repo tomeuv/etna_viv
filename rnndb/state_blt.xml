@@ -43,9 +43,14 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 	<!-- Yet another format enumeration, on first sight it looks like the
              PE/RS formats but I don't think it's the same - for example R8G8 differs
           -->
+        <value value="0x00" name="X4R4G4B4"/>
         <value value="0x01" name="A4R4G4B4"/>
+        <value value="0x02" name="X1R5G5B5"/>
+        <value value="0x03" name="A1R5G5B5"/>
+        <value value="0x04" name="R5G6B5"/>
         <value value="0x05" name="X8R8G8B8"/>
         <value value="0x06" name="A8R8G8B8"/>
+        <value value="0x07" name="YUY2"/>
         <value value="0x1c" name="A16R16G16B16"/>
         <value value="0x22" name="R8G8B8"/> <!-- now that's old-school -->
         <value value="0x23" name="R8"/>
