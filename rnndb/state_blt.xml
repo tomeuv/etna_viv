@@ -191,8 +191,14 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                  0x011 NV12
                  0x111 NV21
                 </doc>
+                <bitfield pos="0" name="ENABLE"/>
+                <bitfield high="5" low="4" name="SOURCE_FORMAT" type="uint" brief="Source yuv format"/>
+                <bitfield pos="8" name="UV_SWAP"/>
             </reg32>
-            <reg32 offset="0x14070" name="UNK14070"/>
+            <reg32 offset="0x14070" name="WINDOW_SIZE" value="0x00000000">
+                <bitfield high="31" low="16" name="HEIGHT" type="uint"/>
+                <bitfield high="15" low="0" name="WIDTH" type="uint"/>
+            </reg32>
             <reg32 offset="0x14074" name="SRC_YADDR" type="VIVM"/>
             <reg32 offset="0x14078" name="SRC_YSTRIDE"/>
             <reg32 offset="0x1407C" name="SRC_UADDR" type="VIVM"/>
