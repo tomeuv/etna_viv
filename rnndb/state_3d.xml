@@ -87,6 +87,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="5" name="X8R8G8B8"/>
         <value value="6" name="A8R8G8B8"/>
         <value value="7" name="YUY2"/><!-- only supported with YUY2_AVERAGING -->
+        <value value="21" name="64BPP_CLEAR"/><!-- HALTI2 -->
     </enum>
     <enum name="PE_FORMAT" brief="Render pixel format">
         <value value="0" name="X4R4G4B4"/>
