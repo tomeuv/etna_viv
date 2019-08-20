@@ -217,6 +217,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="1" name="SLAVE_NOT_PRESENT"/>
         <value value="2" name="PAGE_NOT_PRESENT"/>
         <value value="3" name="WRITE_VIOLATION"/>
+        <value value="4" name="OUT_OF_BOUND"/>
+        <value value="5" name="READ_SECURITY_VIOLATION"/>
+        <value value="6" name="WRITE_SECURITY_VIOLATION"/>
     </enum>
     <stripe name="MMUv2" brief="Memory Management Unit v2">
         <doc>New MMU unit. Only exists on more recent hardware.</doc>
