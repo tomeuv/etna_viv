@@ -193,7 +193,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield high="9" low="0" name="WIDTH" type="fixedp"/>
         <bitfield high="19" low="10" name="HEIGHT" type="fixedp"/>
         <bitfield pos="28" name="ASTC" brief="ASTC switches color space?"/>
-        <bitfield pos="29" name="RGB" brief="RGB color space"/>
+        <bitfield pos="29" name="INT_FILTER" brief="Use faster integer filter (only if format has integer data and texture is not 3D)"/>
         <bitfield pos="31" name="SRGB" brief="SRGB color space"/>
     </bitset>
     <bitset name="TE_SAMPLER_LOD_CONFIG" inline="yes">
