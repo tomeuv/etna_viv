@@ -154,6 +154,16 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <value value="0" name="TILED"/>
         <value value="3" name="LINEAR"/>
     </enum>
+    <enum name="TEXTURE_COMPARE_FUNC" brief="Compare function (for GL_TEXTURE_COMPARE_FUNC)">
+        <value value="0" name="LEQUAL"/>
+        <value value="1" name="GEQUAL"/>
+        <value value="2" name="LESS"/>
+        <value value="3" name="GREATER"/>
+        <value value="4" name="EQUAL"/>
+        <value value="5" name="NOTEQUAL"/>
+        <value value="6" name="ALWAYS"/>
+        <value value="7" name="NEVER"/>
+    </enum>
 
     <!-- register descriptions shared between TE.SAMPLER and NTE.SAMPLER
          and texture descriptors
@@ -232,9 +242,12 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield high="31" low="16" name="HEIGHT" type="fixedp"/>
     </bitset>
     <bitset name="TE_SAMPLER_BASELOD" inline="yes"> <!-- This is not TE_SAMPLER_LOD_CONFIG, it configures a LOD range instead of a bias -->
-        <bitfield pos="23" name="UNK23"/> <!-- set by blob on gc3000, not gc7000 -->
         <bitfield high="3" low="0" name="BASELOD"/>
         <bitfield high="11" low="8" name="MAXLOD"/>
+        <!-- Note: comparator bits are in SAMP_CTRL0 on GC7000 -->
+        <bitfield pos="16" name="COMPARE_ENABLE"/>
+        <bitfield high="22" low="20" name="COMPARE_FUNC" type="TEXTURE_COMPARE_FUNC"/>
+        <bitfield pos="23" name="BASELOD_ENABLE"/> <!-- enable BASELOD/MAXLOD fields (not used on GC7000) -->
     </bitset>
     <bitset name="TE_SAMPLER_CONFIG2"> <!-- contains SAMPLER_MODE -->
         <bitfield pos="16" name="UNK16"/> <!-- always set? -->
