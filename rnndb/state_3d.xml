@@ -848,7 +848,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="11" name="UNK11"/> <!-- Alpha related -->
             <bitfield high="21" low="20" name="UNK20"/> <!-- Depth related -->
             <bitfield pos="23" name="UNK20_MASK"/>
-            <bitfield high="26" low="24" name="UNK24"/> <!-- Sampling related (set on GC3000 but not GC2000) -->
+            <bitfield high="26" low="24" name="UNK24"/> <!-- SMALL_MSAA -->
             <bitfield pos="27" name="UNK24_MASK"/>
             <bitfield pos="30" name="SRGB_MASK"/>
             <bitfield pos="31" name="SRGB"/> <!-- linear to sRGB convert output -->
@@ -988,6 +988,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x01608" name="SOURCE_ADDR" value="0x00000000" type="VIVM"/>
         <reg32 offset="0x0160C" name="SOURCE_STRIDE" value="0x00000000">
             <bitfield high="17" low="0" name="STRIDE" brief="Source stride"/>
+            <bitfield pos="29" name="UNK29"/> <!-- SMALL_MSAA -->
             <bitfield pos="30" name="MULTI" brief="Source is multi pipe"/> <!-- pixelPipes > 1 -->
             <bitfield pos="31" name="TILING" brief="Source is tiled"/>
         </reg32>
