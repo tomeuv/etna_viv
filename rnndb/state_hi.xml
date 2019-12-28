@@ -106,6 +106,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x00024" name="CHIP_REV" brief="Chip revision"/>
         <reg32 offset="0x00028" name="CHIP_DATE" brief="Chip date"/>
         <reg32 offset="0x0002C" name="CHIP_TIME" brief="Chip time"/>
+        <reg32 offset="0x00030" name="CHIP_CUSTOMER_ID" brief="Chip customer ID"/>
         <reg32 offset="0x00034" name="CHIP_MINOR_FEATURE_0" type="chipMinorFeatures0" brief="Chip minor features 0"/>
         <reg32 offset="0x00038" name="CACHE_CONTROL"/>
         <reg32 offset="0x0003C" name="MEMORY_COUNTER_RESET" brief="Memory counter reset">
@@ -165,6 +166,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x000A0" name="CHIP_MINOR_FEATURE_5" type="chipMinorFeatures5" brief="Chip minor features 5"/>
         <reg32 offset="0x000A8" name="CHIP_PRODUCT_ID" brief="Chip product ID"/>
         <reg32 offset="0x000D4" name="BLT_INTR" brief="Async blit interrupt read"/> <!-- ASYNC_BLIT -->
+        <reg32 offset="0x000E8" name="CHIP_ECO_ID" brief="Chip ECO ID"/>
         <reg32 offset="0x000EC" name="AUXBIT"/> <!-- ConfigurePolicyID in Vivante kernel driver -->
     </stripe>
 
