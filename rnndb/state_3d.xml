@@ -1180,7 +1180,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <reg32 offset="0x2200" name="UNK02200" value="0x00000000"/>
             <reg32 offset="0x2240" name="UNK02240" value="0x00000000"/>
             <reg32 offset="0x2400" name="LOD_ADDR" length="14" stride="0x40" type="VIVM"/> <!-- Base address, per LOD level -->
-            <reg32 offset="0x2C00" name="LINEAR_STRIDE" length="14" stride="0x40"/> <!-- TEXTURE_LINEAR -->
+            <reg32 offset="0x2C00" name="LINEAR_STRIDE" length="14" stride="0x40"> <!-- TEXTURE_LINEAR -->
+                <doc>Linear stride LODn will overwrite LOD0 on GC880,GC2000. And only LOD0 is valid for this register.</doc>
+            </reg32>
         </stripe>
     </stripe>
 
