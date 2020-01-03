@@ -1193,7 +1193,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <reg32 offset="0x10100" name="LOG_SIZE" value="0x00000000" type="TE_SAMPLER_LOG_SIZE"/>
             <reg32 offset="0x10180" name="LOD_CONFIG" value="0x00000000" type="TE_SAMPLER_LOD_CONFIG"/>
             <reg32 offset="0x10200" name="UNK10200" value="0x00000000"/>
-            <reg32 offset="0x10280" name="UNK10280" value="0x00000000"/>
+            <reg32 offset="0x10280" name="LINEAR_STRIDE" length="32"/> <!-- TEXTURE_LINEAR -->
             <reg32 offset="0x10300" name="3D_CONFIG" value="0x00000000" type="TE_SAMPLER_3D_CONFIG"/>
             <reg32 offset="0x10380" name="CONFIG1" value="0x00321000" type="TE_SAMPLER_CONFIG1"/>
             <reg32 offset="0x10400" name="UNK10400" value="0x00000000"/>
