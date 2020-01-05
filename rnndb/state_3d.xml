@@ -1203,7 +1203,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <reg32 offset="0x10500" name="ASTC0" type="TE_SAMPLER_ASTC0"/> <!-- ASTC -->
             <reg32 offset="0x10580" name="ASTC1"/> <!-- ASTC -->
             <reg32 offset="0x10600" name="ASTC2"/> <!-- ASTC -->
-            <reg32 offset="0x10600" name="ASTC3"/> <!-- ASTC -->
+            <reg32 offset="0x10680" name="ASTC3"/> <!-- ASTC -->
             <reg32 offset="0x10700" name="BASELOD" value="0x00000F00" type="TE_SAMPLER_BASELOD"/> <!-- TEX_BASELOD -->
             <reg32 offset="0x10780" name="UNK10780" value="0x00030000"/> <!-- HALTI3 || TX_SUPPORT_DEC -->
             <reg32 offset="0x11000" name="FRAC_UNK11000"/> <!-- TX_FRAC_PRECISION_6BIT -->
