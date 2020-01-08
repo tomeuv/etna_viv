@@ -56,7 +56,7 @@ def main():
     state_xml = parse_rng_file(args.state_xml_file)
     state_map = state_xml.lookup_domain('VIVS')
 
-    feature_fields = ["chipFeatures", "chipMinorFeatures", "chipMinorFeatures1", "chipMinorFeatures2", "chipMinorFeatures3", "chipMinorFeatures4", "chipMinorFeatures5"]
+    feature_fields = ["chipFeatures", "chipMinorFeatures", "chipMinorFeatures1", "chipMinorFeatures2", "chipMinorFeatures3", "chipMinorFeatures4", "chipMinorFeatures5", "chipMinorFeatures6", "chipMinorFeatures7", "chipMinorFeatures8", "chipMinorFeatures9", "chipMinorFeatures10", "chipMinorFeatures11"]
     all_features = []
     for field in feature_fields:
         if field == 'chipMinorFeatures':
