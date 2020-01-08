@@ -356,7 +356,13 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 all the counters of that unit.
             </doc>
             <bitfield high="7" low="0" name="FE">
+                <value value="10" name="DRAW_COUNT"/>
+                <value value="11" name="OUT_VERTEX_COUNT"/>
+                <value value="12" name="CACHE_MISS_COUNT"/>
                 <value value="15" name="RESET"/>
+                <value value="16" name="CACHE_LK_COUNT"/>
+                <value value="17" name="STALL_COUNT"/>
+                <value value="18" name="PROCESS_COUNT"/>
             </bitfield>
             <bitfield high="15" low="8" name="DE">
                 <value value="15" name="RESET"/>
@@ -395,11 +401,14 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 <value value="6" name="DEPTH_CLIPPED_COUNTER"/>
                 <value value="7" name="TRIVIAL_REJECTED_COUNTER"/>
                 <value value="8" name="CULLED_COUNTER"/>
+                <value value="9" name="DROPED_PRIM_COUNTER"/>
+                <value value="10" name="FRUSTUM_CLIPPED_PRIM_COUNTER"/>
                 <value value="15" name="RESET"/>
             </bitfield>
             <bitfield high="15" low="8" name="SE">
                 <value value="0" name="CULLED_TRIANGLE_COUNT"/>
                 <value value="1" name="CULLED_LINES_COUNT"/>
+                <value value="4" name="TRIVIAL_REJECTED_LINE_COUNT"/>
                 <value value="15" name="RESET"/>
             </bitfield>
             <bitfield high="23" low="16" name="RA">
@@ -411,6 +420,8 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 <value value="10" name="PREFETCH_CACHE_MISS_COUNTER"/>
                 <value value="11" name="CULLED_QUAD_COUNT"/>
                 <value value="15" name="RESET"/>
+                <value value="17" name="PIPE_HZ_CACHE_MISS_COUNTER"/>
+                <value value="18" name="PREFETCH_HZ_CACHE_MISS_COUNTER"/>
             </bitfield>
             <bitfield high="31" low="24" name="TX">
                 <value value="0" name="TOTAL_BILINEAR_REQUESTS"/>
@@ -435,17 +446,56 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 PROFILE_xx_READ registers. Selecting counter 15 resets
                 all the counters of that unit.
             </doc>
-            <bitfield high="7" low="0" name="MC"> <!-- Also selects L2 -->
+            <bitfield high="7" low="0" name="MC">
+                <doc>
+                    Reset of all counters of that unit happens via MEMORY_COUNTER_RESET register.
+                </doc>
                 <value value="1" name="TOTAL_READ_REQ_8B_FROM_PIPELINE"/>
                 <value value="2" name="TOTAL_READ_REQ_8B_FROM_IP"/>
                 <value value="3" name="TOTAL_WRITE_REQ_8B_FROM_PIPELINE"/>
-                <value value="15" name="RESET"/>
+                <value value="4" name="MCC_TOTAL_READ_REQ_SENTOUT_FROM_COLORPIPE"/>
+                <value value="5" name="MCC_TOTAL_WRITE_REQ_FROM_COLORPIPE"/>
+                <value value="7" name="MCC_TOTAL_READ_REQ_8B_FROM_DEPTHPIPE"/>
+                <value value="8" name="MCC_TOTAL_READ_REQ_8B_SENTOUT_FROM_DEPTHPIPE"/>
+                <value value="9" name="MCC_TOTAL_WRITE_REQ_8B_FROM_DEPTHPIPE"/>
+                <value value="10" name="MCC_TOTAL_READ_REQ_SENTOUT_FROM_DEPTHPIPE"/>
+                <value value="11" name="MCC_TOTAL_WRITE_REQ_FROM_DEPTHPIPE"/>
+                <value value="12" name="MCC_TOTAL_READ_REQ_8B_FROM_OTHERS"/>
+                <value value="13" name="MCC_TOTAL_WRITE_REQ_8B_FROM_OTHERS"/>
+                <value value="14" name="MCC_TOTAL_READ_REQ_FROM_OTHERS"/>
+                <value value="15" name="MCC_TOTAL_WRITE_REQ_FROM_OTHERS"/>
+                <value value="21" name="FE_READ_BANDWIDTH"/>
+                <value value="22" name="MMU_READ_BANDWIDTH"/>
+                <value value="23" name="BLT_READ_BANDWIDTH"/>
+                <value value="24" name="SH0_READ_BANDWIDTH"/>
+                <value value="25" name="SH1_READ_BANDWIDTH"/>
+                <value value="26" name="PE_WRITE_BANDWIDTH"/>
+                <value value="27" name="BLT_WRITE_BANDWIDTH"/>
+                <value value="28" name="SH0_WRITE_BANDWIDTH"/>
+                <value value="29" name="SH1_WRITE_BANDWIDTH"/>
             </bitfield>
             <bitfield high="15" low="8" name="HI">
                 <value value="0" name="AXI_CYCLES_READ_REQUEST_STALLED"/>
                 <value value="1" name="AXI_CYCLES_WRITE_REQUEST_STALLED"/>
                 <value value="2" name="AXI_CYCLES_WRITE_DATA_STALLED"/>
                 <value value="15" name="RESET"/>
+            </bitfield>
+            <bitfield high="23" low="16" name="L2">
+                <value value="0" name="TOTAL_AXI0_READ_REQUEST_COUNT"/>
+                <!-- TODO: TOTAL_AXI1_READ_REQUEST_COUNT - it is missing in the downstream kernel -->
+                <value value="4" name="TOTAL_AXI0_WRITE_REQUEST_COUNT"/>
+                <value value="5" name="TOTAL_AXI1_WRITE_REQUEST_COUNT"/>
+                <value value="8" name="TOTAL_READ_TRANSACTIONS_REQUEST_BY_AXI0"/>
+                <value value="9" name="TOTAL_READ_TRANSACTIONS_REQUEST_BY_AXI1"/>
+                <value value="12" name="TOTAL_WRITE_TRANSACTIONS_REQUEST_BY_AXI0"/>
+                <value value="13" name="TOTAL_WRITE_TRANSACTIONS_REQUEST_BY_AXI1"/>
+                <value value="15" name="RESET"/>
+                <value value="16" name="AXI0_MINMAX_LATENCY"/>
+                <value value="17" name="AXI0_TOTAL_LATENCY"/>
+                <value value="18" name="AXI0_TOTAL_REQUEST_COUNT"/>
+                <value value="19" name="AXI1_MINMAX_LATENCY"/>
+                <value value="20" name="AXI1_TOTAL_LATENCY"/>
+                <value value="21" name="AXI0_TOTAL_REQUEST_COUNT"/>
             </bitfield>
             <bitfield high="31" low="24" name="BLT">
                 <value value="0" name="UNK0"/>
@@ -463,6 +513,14 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         </reg32>
         <reg32 offset="0x0055C" name="L2_CACHE_CONFIG"/>
         <reg32 offset="0x00564" name="PROFILE_L2_READ"/>
+        <reg32 offset="0x00568" name="MCC_LATENCY_RESET"> <!-- hasNewCounters -->
+            <doc>
+                Downstream kernel driver writes 0x10a followed by 0xa to reset latency counters.
+            </doc>
+        </reg32>
+        <reg32 offset="0x0056C" name="MCC_AXI_MAX_MIN_LATENCY"/> <!-- hasNewCounters -->
+        <reg32 offset="0x00570" name="MCC_AXI_TOTAL_LATENCY"/> <!-- hasNewCounters -->
+        <reg32 offset="0x00574" name="MCC_AXI_SAMPLE_COUNT"/> <!-- hasNewCounters -->
     </stripe>
 </domain>
 
