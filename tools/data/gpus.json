@@ -132,6 +132,31 @@
         }]
     },
     {
+        "platform": "STMicroelectronics STM32MP157C",
+        "chips": [{
+            "type": "GC400",
+            "chipModel": "0x400",
+            "chipRevision": "0x4652",
+            "chipFeatures": "0xa0e9e004",
+            "chipMinorFeatures": "0xe1299fff",
+            "chipMinorFeatures1": "0xbe13b219",
+            "chipMinorFeatures2": "0xce110010",
+            "chipMinorFeatures3": "0x8000001",
+            "chipMinorFeatures4": "0x20102",
+            "chipMinorFeatures5": "0x120000",
+            "streamCount": "4",
+            "registerMax": "64",
+            "threadCount": "128",
+            "shaderCoreCount": "1",
+            "vertexCacheSize": "8",
+            "vertexOutputBufferSize": "1024",
+            "pixelPipes": "1",
+            "instructionCount": "256",
+            "numConstants": "320",
+            "numVaryings": "8"
+        }]
+    },
+    {
         "platform": "Freescale i.MX 6 Quad",
         "chips": [{
             "type": "GC2000",
