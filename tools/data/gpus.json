@@ -315,6 +315,32 @@
             "chipMinorFeatures5": "0x00000000",
             "chipMinorFeatures6": "0x00000000"
         }]
+    },{
+        "platform": "Freescale i.MX 8 M",
+        "chips": [{
+            "type": "GC7000L",
+            "chipModel": "0x7000",
+            "chipRevision": "0x6214",
+            "chipFeatures": "0xe0287cad",
+            "chipMinorFeatures": "0xc1799eff",
+            "chipMinorFeatures1": "0xfefbfad9",
+            "chipMinorFeatures2": "0xeb9d4fbf",
+            "chipMinorFeatures3": "0xedfffced",
+            "chipMinorFeatures4": "0xdb0dafc7",
+            "chipMinorFeatures5": "0xbb5ac333",
+            "chipMinorFeatures6": "0xfc8ee200",
+            "streamCount": "16",
+            "registerMax": "64",
+            "threadCount": "1024",
+            "shaderCoreCount": "4",
+            "vertexCacheSize": "16",
+            "vertexOutputBufferSize": "1024",
+            "pixelPipes": "2",
+            "instructionCount": "512",
+            "numConstants": "320",
+            "numVaryings": "16",
+            "bufferSize": "0"
+        }]
     }
 ]
 
