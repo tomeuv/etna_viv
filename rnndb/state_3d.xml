@@ -817,7 +817,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="7" low="0" name="REF_BACK" brief="glStencilFunc ref (GL_BACK)"/>
             <bitfield pos="8" name="REF_BACK_MASK"/>
             <bitfield pos="9" name="UNK16_MASK"/>
-            <bitfield high="31" low="16" name="UNK16"/>
+            <bitfield high="31" low="16" name="EXTRA_ALPHA_REF"/>
         </reg32>
         <reg32 offset="0x014A4" name="LOGIC_OP" masked="yes" value="0x000E400C">
             <!-- only supported if feature bit LOGIC_OP present.
