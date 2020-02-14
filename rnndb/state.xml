@@ -321,7 +321,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="7" low="0" name="NUM"/>
         </reg32>
         <reg32 offset="0x03820" name="VARYING_NUM_COMPONENTS" type="VARYING_NUM_COMPONENTS" brief="Number of components in varyings" value="0x00000000"> <!-- !HALTI5 -->
-            <doc>Number of components per varying (PS).</doc>
+            <doc>Number of components per varying (PS) for the first 8 varyings</doc>
         </reg32>
         <reg32 offset="0x03824" name="OCCLUSION_QUERY_ADDR" value="0x00000000" type="VIVM">
             <doc>Writing the address where to store the result will enable occlusion query.</doc>
@@ -349,7 +349,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x03830" name="OCCLUSION_QUERY_CONTROL">
             <doc>Write some value to this register to disable occlusion query.</doc>
         </reg32>
-        <reg32 offset="0x03834" name="UNK03834" value="0x00000000"/> <!-- !HALTI5 -->
+        <reg32 offset="0x03834" name="VARYING_NUM_COMPONENTS2" type="VARYING_NUM_COMPONENTS" brief="Number of components in varyings" value="0x00000000"> <!-- !HALTI5 -->
+            <doc>Number of components per varying (PS) for the last 8 varyings</doc>
+        </reg32>
         <reg32 offset="0x03838" name="UNK03838" value="0x00000000"/> <!-- !HALTI5 -->
         <reg32 offset="0x0384C" name="API_MODE" brief="API mode" value="0x00000000">
             <value value="0" name="OPENGL"/>
