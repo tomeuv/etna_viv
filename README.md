@@ -31,6 +31,7 @@ ARM-based:
 MIPS-based:
 - Ingenic JZ4760 has a GC200 (2D only)
 - Ingenic JZ4770 has a GC860: [GCW Zero](http://www.gcw-zero.com)
+- Loongson 7A1000 has a GC1000: [7a1000](http://www.loongson.cn/product/cpu/qp/Loongson7A1000.html)
 
 See also [wikipedia](https://en.wikipedia.org/wiki/Vivante_Corporation).
 
