@@ -68,6 +68,13 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="9" name="IM" brief="IM is idle"/>
             <bitfield pos="10" name="FP" brief="Fragment processor is idle"/>
             <bitfield pos="11" name="TS" brief="Tile status is idle"/>
+            <bitfield pos="12" name="BL" brief="BL is idle"/>
+            <bitfield pos="13" name="ASYNCFE" brief="AsyncFE is idle"/>
+            <bitfield pos="14" name="MC" brief="MC is idle"/>
+            <bitfield pos="15" name="PPA" brief="PPA is idle"/>
+            <bitfield pos="16" name="WD" brief="WD is idle"/>
+            <bitfield pos="17" name="NN" brief="NN is idle"/>
+            <bitfield pos="18" name="TP" brief="TP is idle"/>
             <bitfield pos="31" name="AXI_LP" brief="AXI bus in low power mode"/>
         </reg32>
         <reg32 offset="0x00008" name="AXI_CONFIG" brief="AXI bus configuration">
