@@ -1263,7 +1263,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <reg32 offset="0x16200" name="SAMP_CTRL1_MIRROR"/> <!-- MIRROR of 16E00 -->
             <reg32 offset="0x16400" name="SAMP_LOD_MINMAX_MIRROR"/> <!-- MIRROR of 17000 -->
             <reg32 offset="0x16600" name="SAMP_LOD_BIAS_MIRROR"/> <!-- MIRROR of 17200 -->
-            <reg32 offset="0x16800" name="UNK17400_MIRROR"/> <!-- MIRROR of 17400 -->
+            <reg32 offset="0x16800" name="SAMP_ANISOTROPY_MIRROR"/> <!-- MIRROR of 17400 -->
             <reg32 offset="0x16C00" name="SAMP_CTRL0">
                 <bitfield high="2" low="0" name="UWRAP" type="TEXTURE_WRAPMODE"/>
                 <bitfield high="5" low="3" name="VWRAP" type="TEXTURE_WRAPMODE"/>
@@ -1294,7 +1294,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 <bitfield high="15" low="0" name="BIAS" type="fixedp"/>
                 <bitfield pos="16" name="ENABLE"/>
             </reg32>
-            <reg32 offset="0x17400" name="UNK17400"/>
+            <reg32 offset="0x17400" name="SAMP_ANISOTROPY">
+                <doc>Logarithm of size of anisotropic filter, in 8.8 format.</doc>
+            </reg32>
         </stripe>
     </stripe>
 
