@@ -182,7 +182,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield high="21" low="20" name="ADDRESSING_MODE" type="TEXTURE_ADDRESSING_MODE"/>
         <bitfield high="23" low="22" name="ENDIAN" type="ENDIAN_MODE"/>
         <bitfield high="31" low="24" name="ANISOTROPY" type="fixedp">
-            <doc>Logarithm of size of anisotropic filter, in 3.5 format.</doc>
+            <doc>Logarithm of size of anisotropic filter, in 5.5 format.</doc>
         </bitfield>
     </bitset>
     <bitset name="TE_SAMPLER_SIZE" inline="yes">
