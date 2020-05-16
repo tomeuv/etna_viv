@@ -460,17 +460,17 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 <value value="1" name="TOTAL_READ_REQ_8B_FROM_PIPELINE"/>
                 <value value="2" name="TOTAL_READ_REQ_8B_FROM_IP"/>
                 <value value="3" name="TOTAL_WRITE_REQ_8B_FROM_PIPELINE"/>
-                <value value="4" name="MCC_TOTAL_READ_REQ_SENTOUT_FROM_COLORPIPE"/>
-                <value value="5" name="MCC_TOTAL_WRITE_REQ_FROM_COLORPIPE"/>
-                <value value="7" name="MCC_TOTAL_READ_REQ_8B_FROM_DEPTHPIPE"/>
-                <value value="8" name="MCC_TOTAL_READ_REQ_8B_SENTOUT_FROM_DEPTHPIPE"/>
-                <value value="9" name="MCC_TOTAL_WRITE_REQ_8B_FROM_DEPTHPIPE"/>
-                <value value="10" name="MCC_TOTAL_READ_REQ_SENTOUT_FROM_DEPTHPIPE"/>
-                <value value="11" name="MCC_TOTAL_WRITE_REQ_FROM_DEPTHPIPE"/>
-                <value value="12" name="MCC_TOTAL_READ_REQ_8B_FROM_OTHERS"/>
-                <value value="13" name="MCC_TOTAL_WRITE_REQ_8B_FROM_OTHERS"/>
-                <value value="14" name="MCC_TOTAL_READ_REQ_FROM_OTHERS"/>
-                <value value="15" name="MCC_TOTAL_WRITE_REQ_FROM_OTHERS"/>
+                <value value="4" name="TOTAL_READ_REQ_SENTOUT_FROM_COLORPIPE"/>
+                <value value="5" name="TOTAL_WRITE_REQ_FROM_COLORPIPE"/>
+                <value value="7" name="TOTAL_READ_REQ_8B_FROM_DEPTHPIPE"/>
+                <value value="8" name="TOTAL_READ_REQ_8B_SENTOUT_FROM_DEPTHPIPE"/>
+                <value value="9" name="TOTAL_WRITE_REQ_8B_FROM_DEPTHPIPE"/>
+                <value value="10" name="TOTAL_READ_REQ_SENTOUT_FROM_DEPTHPIPE"/>
+                <value value="11" name="TOTAL_WRITE_REQ_FROM_DEPTHPIPE"/>
+                <value value="12" name="TOTAL_READ_REQ_8B_FROM_OTHERS"/>
+                <value value="13" name="TOTAL_WRITE_REQ_8B_FROM_OTHERS"/>
+                <value value="14" name="TOTAL_READ_REQ_FROM_OTHERS"/>
+                <value value="15" name="TOTAL_WRITE_REQ_FROM_OTHERS"/>
                 <value value="21" name="FE_READ_BANDWIDTH"/>
                 <value value="22" name="MMU_READ_BANDWIDTH"/>
                 <value value="23" name="BLT_READ_BANDWIDTH"/>
