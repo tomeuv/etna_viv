@@ -520,14 +520,14 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         </reg32>
         <reg32 offset="0x0055C" name="L2_CACHE_CONFIG"/>
         <reg32 offset="0x00564" name="PROFILE_L2_READ"/>
-        <reg32 offset="0x00568" name="MCC_LATENCY_RESET"> <!-- hasNewCounters -->
+        <reg32 offset="0x00568" name="MC_LATENCY_RESET"> <!-- hasNewCounters -->
             <doc>
                 Downstream kernel driver writes 0x10a followed by 0xa to reset latency counters.
             </doc>
         </reg32>
-        <reg32 offset="0x0056C" name="MCC_AXI_MAX_MIN_LATENCY"/> <!-- hasNewCounters -->
-        <reg32 offset="0x00570" name="MCC_AXI_TOTAL_LATENCY"/> <!-- hasNewCounters -->
-        <reg32 offset="0x00574" name="MCC_AXI_SAMPLE_COUNT"/> <!-- hasNewCounters -->
+        <reg32 offset="0x0056C" name="MC_AXI_MAX_MIN_LATENCY"/> <!-- hasNewCounters -->
+        <reg32 offset="0x00570" name="MC_AXI_TOTAL_LATENCY"/> <!-- hasNewCounters -->
+        <reg32 offset="0x00574" name="MC_AXI_SAMPLE_COUNT"/> <!-- hasNewCounters -->
     </stripe>
 </domain>
 
