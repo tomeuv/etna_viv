@@ -1258,6 +1258,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 <bitfield pos="0" name="TS_MODE" type="TS_MODE"/>
                 <bitfield pos="1" name="TS_ENABLE"/>
                 <bitfield high="4" low="2" name="TS_INDEX" brief="Index in TS.SAMPLER[...]"/>
+                <bitfield pos="6" name="COMPRESSION"/>
             </reg32>
             <reg32 offset="0x16000" name="SAMP_CTRL0_MIRROR"/> <!-- MIRROR of 16C00 -->
             <reg32 offset="0x16200" name="SAMP_CTRL1_MIRROR"/> <!-- MIRROR of 16E00 -->
