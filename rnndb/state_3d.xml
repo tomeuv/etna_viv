@@ -500,7 +500,11 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="1" name="LAST_VARYING_2X" brief="Last varying has 1 or 2 components"></bitfield>
         </reg32>
         <reg32 offset="0x00E04" name="MULTISAMPLE_UNK00E04" value="0x00000000"/>
-        <reg32 offset="0x00E08" name="EARLY_DEPTH" value="0x17000031" brief="Early depth control"/>
+        <reg32 offset="0x00E08" name="EARLY_DEPTH" value="0x17000031" brief="Early depth control">
+            <bitfield pos="0" name="TEST_ENABLE"/>
+            <bitfield pos="24" name="HDEPTH_DISABLE"/>
+            <bitfield pos="28" name="WRITE_DISABLE"/>
+        </reg32>
         <reg32 offset="0x00E0C" name="UNK00E0C" value="0x00000000"/> <!-- HALTI2 -->
         <reg32 offset="0x00E10" name="MULTISAMPLE_UNK00E10" value="0x00000000" length="4" stride="4"/>
         <reg32 offset="0x00E20" name="HDEPTH_CONTROL">
@@ -689,12 +693,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="21" name="ONLY_DEPTH_MASK"/>
             <bitfield pos="24" name="DISABLE_ZS">
                 <doc>
-                    Completely disabled writing to depth stencil buffer on older hardware.
-
-                    On GC7000+ this bit does something else and needs to be always enabled,
-                    otherwise rendering with TS-backed depth buffer tends to crash.
-                    (it might actually be the new bit for supertiling, a similar move
-                    that happened in PE.COLOR_FORMAT with SUPER_TILED_NEW)
+                    Disables writes from the late ZS stage. On GPUs that can write
+                    depth from the early (RA) stage, the late stage must be disabled
+                    when early writes are active, otherwise the GPU hangs.
                 </doc>
             </bitfield>
             <bitfield pos="25" name="DISABLE_ZS_MASK"/>
