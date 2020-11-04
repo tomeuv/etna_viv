@@ -503,6 +503,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x00E08" name="EARLY_DEPTH" value="0x17000031" brief="Early depth control">
             <bitfield pos="0" name="TEST_ENABLE"/>
             <bitfield pos="24" name="HDEPTH_DISABLE"/>
+                <doc>HDEPTH can only be used when early testing is enabled and depth is written from the RA stage.</doc>
             <bitfield pos="28" name="WRITE_DISABLE"/>
         </reg32>
         <reg32 offset="0x00E0C" name="UNK00E0C" value="0x00000000"/> <!-- HALTI2 -->
@@ -693,9 +694,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="21" name="ONLY_DEPTH_MASK"/>
             <bitfield pos="24" name="DISABLE_ZS">
                 <doc>
-                    Disables writes from the late ZS stage. On GPUs that can write
-                    depth from the early (RA) stage, the late stage must be disabled
-                    when early writes are active, otherwise the GPU hangs.
+                    Disables the late ZS stage (both testing and writes). On GPUs that can write
+                    depth from the early (RA) stage, the late stage must be disabled when early
+                    writes are active, otherwise the GPU hangs.
                 </doc>
             </bitfield>
             <bitfield pos="25" name="DISABLE_ZS_MASK"/>
