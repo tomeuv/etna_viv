@@ -35,7 +35,7 @@ PLO_INITIAL_PAD = -3
 def _describe(t, v):
     return t.describe(v)
 
-def parse_command_buffer(buffer_words, cmdstream_info, initial_padding=CMDBUF_IGNORE_INITIAL, describe=_describe):
+def parse_command_buffer(buffer_words, cmdstream_info, initial_padding=CMDBUF_IGNORE_INITIAL, describe=_describe, print_offset=False):
     '''
     Parse Vivante command buffer contents, return a sequence of 
     CommandInfo records.
@@ -49,7 +49,10 @@ def parse_command_buffer(buffer_words, cmdstream_info, initial_padding=CMDBUF_IG
     payload_end_ptr = 0
     op = 0
     ptr = 0
-    for value in buffer_words:
+    for off, value in enumerate(buffer_words):
+        if print_offset:
+            print "{0:#0{1}x}:".format(off * 4, 6),
+
         state_info = None
         if ptr >= next_cmd:
             payload_ofs = PLO_CMD

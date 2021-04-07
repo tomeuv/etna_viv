@@ -122,6 +122,9 @@ def parse_arguments():
     parser.add_argument('--output-c-raw', dest='output_c_raw',
             default=False, action='store_const', const=True,
             help='Print command buffer emission in C raw command stream emit format')
+    parser.add_argument('-o', '--print-offset', dest='print_offset',
+            default=False, action='store_const', const=True,
+            help='Print command buffer emission in C raw command stream emit format')
     return parser.parse_args()        
 
 shader_num = 0
@@ -184,7 +187,7 @@ def main():
                     value = int(value[1:9], 16)
                     values.append(value)
 
-    recs = parse_command_buffer(values, cmdstream_info, initial_padding=0)
+    recs = parse_command_buffer(values, cmdstream_info, initial_padding=0, print_offset=args.print_offset)
     if args.output_c_raw:
         dump_command_buffer_c_raw(sys.stdout, recs, state_map)
     elif args.output_c:
