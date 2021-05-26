@@ -191,11 +191,7 @@ Contact
 
 There is a [freedesktop.org mailing list](https://lists.freedesktop.org/mailman/listinfo/etnaviv) for the project.
 
-There is also a Google group for development discussion for this project at
-[etnaviv-devel](https://groups.google.com/forum/#!forum/etnaviv-devel), but we
-are in process of switching to the above freedesktop mailing list.
-
-We usually hang out in `#etnaviv` on `irc.freenode.net`. 
+We usually hang out in `#etnaviv` on `irc.oftc.net`. 
 
 Authors
 ========
