@@ -784,8 +784,8 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="3" low="0" name="FORMAT" type="PE_FORMAT"/>
             <bitfield pos="4" name="FORMAT_MASK"/>
             <bitfield high="11" low="8" name="COMPONENTS" type="RGBA_BITS" brief="glColorMask"/>
-            <bitfield pos="13" name="SUPER_TILED_NEW"/> <!-- GC7000 uses this to determine whether to supertile -->
             <bitfield pos="12" name="COMPONENTS_MASK"/>
+            <bitfield pos="13" name="SUPER_TILED_NEW"/> <!-- CACHE128B256BPERLINE -->
             <bitfield pos="16" name="OVERWRITE" brief="Set to 1 when destination fully overwritten, so no alpha blending and masked components"/>
             <bitfield pos="17" name="OVERWRITE_MASK"/>
             <bitfield pos="20" name="SUPER_TILED"/>
