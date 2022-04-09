@@ -991,13 +991,15 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x01608" name="SOURCE_ADDR" value="0x00000000" type="VIVM"/>
         <reg32 offset="0x0160C" name="SOURCE_STRIDE" value="0x00000000">
             <bitfield high="17" low="0" name="STRIDE" brief="Source stride"/>
-            <bitfield pos="29" name="UNK29"/> <!-- SMALL_MSAA -->
+            <bitfield pos="29" name="TS_MODE" type="TS_MODE"/> <!-- CACHE128B256BPERLINE || SMALL_MSAA -->
+            <bitfield pos="27" name="SUPER_TILED_NEW" brief="Source is super tiled"/> <!-- CACHE128B256BPERLINE -->
             <bitfield pos="30" name="MULTI" brief="Source is multi pipe"/> <!-- pixelPipes > 1 -->
             <bitfield pos="31" name="TILING" brief="Source is tiled"/>
         </reg32>
         <reg32 offset="0x01610" name="DEST_ADDR" value="0x00000000" type="VIVM"/>
         <reg32 offset="0x01614" name="DEST_STRIDE" value="0x00000000">
             <bitfield high="17" low="0" name="STRIDE" brief="Destination stride"/>
+            <bitfield pos="27" name="SUPER_TILED_NEW" brief="Destination is super tiled"/> <!-- CACHE128B256BPERLINE -->
             <bitfield pos="30" name="MULTI" brief="Destination is multi pipe"/> <!-- pixelPipes > 1 -->
             <bitfield pos="31" name="TILING" brief="Destination is tiled"/>
         </reg32>
