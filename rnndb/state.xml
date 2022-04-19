@@ -301,7 +301,13 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield pos="3" name="FLUSH_PEMMU" brief="Flush the PE render target address translation caches"/>
             <bitfield pos="4" name="FLUSH_UNK4" brief="Flush the RA/TX/PEZ address translation caches (not sure about the bit mapping)"/>
         </reg32>
-        <reg32 offset="0x03814" name="VERTEX_ELEMENT_CONFIG" value="0x00000001"/>
+        <reg32 offset="0x03814" name="VERTEX_ELEMENT_CONFIG"> <!-- !NEW_GPIPE -->
+            <bitfield pos="0" name="UNK0"/> <!-- always set by blob -->
+            <!-- This bit is set on primitive types that reuse a vertex for the next
+                 primitive, i.e. LINE_LOOP, LINE_STRIP, TRIANGLE_STRIP, TRIANGLE_FAN.
+            -->
+            <bitfield pos="4" name="REUSE"/>
+        </reg32>
         <reg32 offset="0x03818" name="MULTI_SAMPLE_CONFIG" value="0x00000000" masked="yes">
             <bitfield high="1" low="0" name="MSAA_SAMPLES">
                 <value value="0" name="NONE"/>
