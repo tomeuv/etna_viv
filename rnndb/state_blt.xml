@@ -110,7 +110,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         </reg32>
         <reg32 offset="0x14008" name="SRC_STRIDE">
             <bitfield high="19" low="0" name="STRIDE"/>
-            <bitfield high="28" low="21" name="FORMAT" type="BLT_FORMAT"/>
+            <bitfield high="26" low="21" name="FORMAT" type="BLT_FORMAT"/>
+            <bitfield pos="27" name="DOWNSAMPLE_X" brief="Downsampling horizontally"/>
+            <bitfield pos="28" name="DOWNSAMPLE_Y" brief="Downsampling vertically"/>
             <bitfield high="30" low="29" name="TILING" type="BLT_TILING"/>
         </reg32>
         <reg32 offset="0x1400C" name="SRC_CONFIG" type="BLT_IMAGE_CONFIG"/>
