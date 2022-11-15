@@ -1042,6 +1042,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="1" low="0" name="AA" brief="Anti-aliasing mode (not used for MSAA)"/>
             <bitfield high="9" low="8" name="ENDIAN" type="ENDIAN_MODE"/>
             <bitfield pos="20" name="UNK20"/>
+            <bitfield pos="24" name="TS_MODE" type="TS_MODE"/>
             <bitfield pos="28" name="UNK28"/>
         </reg32>
         <reg32 offset="0x016B0" name="KICKER_INPLACE" value="0x00000000" brief="Triggers an in-place resolve, where the value is the number of tiles">
