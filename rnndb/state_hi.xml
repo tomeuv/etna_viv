@@ -259,16 +259,16 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="31" low="10" name="ADDRESS" brief="Upper bits of the page aligned master TLB"/>
         </reg32>
         <reg32 offset="0x00188" name="STATUS" brief="Status register that holds which MMU generated an exception">
-            <bitfield high="1" low="0" name="EXCEPTION0" type="MMU_EXCEPTION" brief="MMU 0 caused an exception">
+            <bitfield high="3" low="0" name="EXCEPTION0" type="MMU_EXCEPTION" brief="MMU 0 caused an exception">
                 <doc>EXCEPTION_ADDR[0] will contain the exception address.</doc>
             </bitfield>
-            <bitfield high="5" low="4" name="EXCEPTION1" type="MMU_EXCEPTION" brief="MMU 1 caused an exception">
+            <bitfield high="7" low="4" name="EXCEPTION1" type="MMU_EXCEPTION" brief="MMU 1 caused an exception">
                 <doc>EXCEPTION_ADDR[1] will contain the exception address.</doc>
             </bitfield>
-            <bitfield high="9" low="8" name="EXCEPTION2" type="MMU_EXCEPTION" brief="MMU 2 caused an exception">
+            <bitfield high="11" low="8" name="EXCEPTION2" type="MMU_EXCEPTION" brief="MMU 2 caused an exception">
                 <doc>EXCEPTION_ADDR[2] will contain the exception address.</doc>
             </bitfield>
-            <bitfield high="13" low="12" name="EXCEPTION3" type="MMU_EXCEPTION" brief="MMU 3 caused an exception">
+            <bitfield high="15" low="12" name="EXCEPTION3" type="MMU_EXCEPTION" brief="MMU 3 caused an exception">
                 <doc>EXCEPTION_ADDR[3] will contain the exception address.</doc>
             </bitfield>
         </reg32>
