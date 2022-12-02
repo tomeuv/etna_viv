@@ -502,7 +502,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 <value value="18" name="AXI0_TOTAL_REQUEST_COUNT"/>
                 <value value="19" name="AXI1_MINMAX_LATENCY"/>
                 <value value="20" name="AXI1_TOTAL_LATENCY"/>
-                <value value="21" name="AXI0_TOTAL_REQUEST_COUNT"/>
+                <value value="21" name="AXI1_TOTAL_REQUEST_COUNT"/>
             </bitfield>
             <bitfield high="31" low="24" name="BLT">
                 <value value="0" name="UNK0"/>
