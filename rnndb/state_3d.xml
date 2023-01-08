@@ -360,14 +360,22 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <doc>Write some value to this register to kick off thread walker</doc>
         </reg32>
         <reg32 offset="0x00924" name="UNK00924" value="0x00000000"/>
-        <!-- these 3 seem to match workgroup count x/y/z-->
-        <reg32 offset="0x00940" name="UNK00940" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
-        <reg32 offset="0x00944" name="UNK00944" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
-        <reg32 offset="0x00948" name="UNK00948" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
-        <!-- these 3 seem to match workgroup size x/y/z-->
-        <reg32 offset="0x0094C" name="UNK0094C" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
-        <reg32 offset="0x00950" name="UNK00950" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
-        <reg32 offset="0x00954" name="UNK00954" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
+        <reg32 offset="0x0092C" name="GLOBAL_WORK_OFFSET_X" value="0x00000000"/>
+        <reg32 offset="0x00934" name="GLOBAL_WORK_OFFSET_Y" value="0x00000000"/>
+        <reg32 offset="0x0093C" name="GLOBAL_WORK_OFFSET_Z" value="0x00000000"/>
+        <reg32 offset="0x00940" name="WORKGROUP_COUNT_X" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
+        <reg32 offset="0x00944" name="WORKGROUP_COUNT_Y" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
+        <reg32 offset="0x00948" name="WORKGROUP_COUNT_Z" value="0x00000000"/> <!-- SHADER_ENHANCEMENTS2 -->
+
+        <reg32 offset="0x0094C" name="WORKGROUP_SIZE_X" value="0x00000000"> <!-- SHADER_ENHANCEMENTS2 -->
+            <doc>Set to workgroup size x - 1</doc>
+        </reg32>
+        <reg32 offset="0x00950" name="WORKGROUP_SIZE_Y" value="0x00000000"> <!-- SHADER_ENHANCEMENTS2 -->
+            <doc>Set to workgroup size y - 1</doc>
+        </reg32>
+        <reg32 offset="0x00954" name="WORKGROUP_SIZE_Z" value="0x00000000"> <!-- SHADER_ENHANCEMENTS2 -->
+            <doc>Set to workgroup size z - 1</doc>
+        </reg32>
 
         <reg32 offset="0x00958" name="HALTI5_UNK00958"/> <!-- HALTI5 -->
         <reg32 offset="0x0095C" name="HALTI5_UNK0095C"/> <!-- HALTI5 -->
