@@ -343,9 +343,21 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <bitfield high="15" low="12" name="SWATH_SIZE_X"/>
             <bitfield high="19" low="16" name="SWATH_SIZE_Y"/>
             <bitfield high="23" low="20" name="SWATH_SIZE_Z"/>
-            <bitfield high="26" low="24" name="VALUE_ORDER" brief="Order in which global/local ids are in temp registers">
-                <doc>At the beginning of a thread the first temporary registers will contain the local and global ids.
-                    This value what ids will be present, and in which order.
+            <bitfield high="26" low="24" name="VALUE_ORDER" brief="Order in which global/group/local ids are in temp registers">
+                <doc>At the beginning of a thread the first temporary registers will contain the local work id (L), work group id (W) and global work id (G).
+
+                    For following usage/orderings the blob uses these values:
+                        L = 0x5
+                        W = 0x4
+                        G = 0x3
+                        L | W = 0x0
+                        W | L = 0x1
+                        G | W = 0x2
+                        G | L = 0x3
+                        W | G = 0x4
+                        L | G = 0x5
+
+                    It should be possible to use e.g 0x0 for L only ,0x1 for W only and 0x2 for G only.
                 </doc>
             </bitfield>
         </reg32>
