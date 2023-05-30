@@ -722,6 +722,9 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x01320" name="DE_STALL_DE">
             <bitfield high="0" low="0" name="ENABLE" type="ENABLE_DISABLE" brief="Stall DE enable"/>
         </reg32>
+        <reg32 offset="0x1328" name="TILE_CONFIG">
+            <bitfield high="1" low="0" name="SUPERTILE_VERSION" brief="Supertile layout configuration"/>
+        </reg32>
         <reg32 offset="0x01800" name="FILTER_KERNEL" length="128" brief="Filter blit coefficient table">
             <doc>
             The algorithm uses 5 bits of the pixel coordinate's fraction to index the kernel array,
