@@ -820,6 +820,16 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             <reg32 offset="0x12CC0" name="SRC_EX_CONFIG" length="8" type="2D_SRC_EX_CONFIG"/>
             <reg32 offset="0x12CE0" name="SRC_EX_ADDRESS" length="8" type="VIVM"/>
         </stripe>
+        <stripe name="TS">
+            <doc>
+            These registers are used to configure the tile status when the capability 2D_FC_SOURCE is present.
+            </doc>
+            <reg32 offset="0x12EE0" name="ADDRESS" length="8" type="VIVM"/>
+            <reg32 offset="0x12FA0" name="CLEAR_VALUE" length="8" brief="pcked color value of unfilled tiles"/>
+            <reg32 offset="0x12FC0" name="CONTROL" length="8">
+                <bitfield high="2" low="2" name="ENABLE" type="ENABLE_DISABLE"/>
+            </reg32>
+        </stripe>
     </stripe>
 </domain>
 </database>
