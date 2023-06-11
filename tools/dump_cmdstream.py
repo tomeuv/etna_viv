@@ -763,6 +763,8 @@ def main():
             elif t == 0x424f4c42:
                 v = struct.unpack(ENDIAN + WORD_CHAR * 4, rec.data[4:])
                 print('[driver version %d.%d.%d.%d]' % v)
+            else:
+                print('[comment: %s]' % rec.data)
 
 if __name__ == '__main__':
     main()
