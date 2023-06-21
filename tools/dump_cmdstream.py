@@ -139,7 +139,7 @@ class ValueDumper:
             return register.describe(value)
 
 COMPS = 'xyzw'
-def format_state(pos, value, fixp, state_map, describe):
+def format_state(pos, value, fixp, state_map, tracking, describe):
     try:
         path = state_map.lookup_address(pos)
         path_str = format_path(path)
@@ -150,11 +150,15 @@ def format_state(pos, value, fixp, state_map, describe):
     if fixp:
         desc += ' = %f' % fixp_as_float(value)
     else:
-        # For uniforms, show float value
+        # For uniforms, show float value or address
         if (pos >= 0x05000 and pos < 0x06000) or (pos >= 0x07000 and pos < 0x08000) or (pos >= 0x30000 and pos < 0x32000):
             num = pos & 0xFFF
             spec = 'u%i.%s' % (num//16, COMPS[(num//4)%4])
-            desc += ' := %f (%s)' % (int_as_float(value), spec)
+            info = tracking.meminfo_by_address(value)
+            if info:
+                desc += ' := %s (0x%x) (%s)' % (tracking.format_addr(value), value, spec)
+            else:
+                desc += ' := %f (%s)' % (int_as_float(value), spec)
         elif path is not None:
             register = path[-1][0]
             desc += ' := ' + describe(register, value)
@@ -251,7 +255,7 @@ def dump_command_buffer(f, mem, addr, end_addr, depth, state_map, cmdstream_info
                 hide = True
         if rec.state_info is not None:
             states.append((rec.ptr, rec.state_info.pos, rec.state_info.format, rec.value))
-            desc = format_state(rec.state_info.pos, rec.value, rec.state_info.format, state_map, describe)
+            desc = format_state(rec.state_info.pos, rec.value, rec.state_info.format, state_map, tracking, describe)
         else:
             desc = rec.desc
 
