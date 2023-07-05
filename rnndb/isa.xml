@@ -670,7 +670,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
     <value value="0x76" name="NORM_DP4"/> <!-- unverified -->
     <value value="0x77" name="NORM_MUL"/> <!-- unverified -->
     <value value="0x78" name="STORE_ATTR"/> <!-- unverified -->
-    <value value="0x79" name="img_load">
+    <value value="0x79" name="IMG_LOAD">
         <doc>
             src0.x: texture base address
             src0.y: stride in bytes
@@ -679,7 +679,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
             src1.xy: x/y coordinates as integer
         </doc>
     </value>
-    <value value="0x7A" name="img_store">
+    <value value="0x7A" name="IMG_STORE">
         <doc>
             src0.x: texture base address
             src0.y: stride in bytes
