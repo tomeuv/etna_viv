@@ -510,7 +510,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <bitfield pos="28" name="EVIS_NO_BOXFILTER" />
         <bitfield pos="29" name="EVIS_NO_CORDIAC" />
         <bitfield pos="30" name="EVIS_NO_DP32" />
-        <bitfield pos="31" name="EVIS_NO_FILTER" /> */
+        <bitfield pos="31" name="EVIS_NO_FILTER" />
     </bitset>
     <bitset name="chipMinorFeatures8"> <!-- ETNA_GPU_FEATURES_9 -->
         <bitfield pos="0" name="EVIS_NO_IADD" />
