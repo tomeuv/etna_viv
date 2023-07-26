@@ -1298,7 +1298,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
                 <bitfield high="8" low="6" name="WWRAP" type="TEXTURE_WRAPMODE"/> <!-- guess -->
                 <bitfield high="10" low="9" name="MIN" type="TEXTURE_FILTER" brief="Filter for minimization"/>
                 <bitfield high="12" low="11" name="MIP" type="TEXTURE_FILTER" brief="Filter for filtering between mipmap levels">
-                    To disable mipmapping, set this to NONE as well as set the minimum and maximum LOD level to 0..0.
+                    <doc>To disable mipmapping, set this to NONE as well as set the minimum and maximum LOD level to 0..0.</doc>
                 </bitfield>
                 <bitfield high="14" low="13" name="MAG" type="TEXTURE_FILTER" brief="Filter for magnification"/>
                 <bitfield pos="17" name="COMPARE_ENABLE"/>

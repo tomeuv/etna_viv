@@ -726,8 +726,10 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
 <enum name="INST_RGROUP" brief="Register group">
     <value value="0" name="TEMP" brief="Temporary"/>
     <value value="1" name="INTERNAL" brief="Derived values">
+        <doc>
         Only one register in this range is known:
         - 0.x: gl_FrontFacing (PS)
+        </doc>
     </value>
     <value value="2" name="UNIFORM_0" brief="Uniforms 0..127"/>
     <value value="3" name="UNIFORM_1" brief="Uniforms 128..255"/>
