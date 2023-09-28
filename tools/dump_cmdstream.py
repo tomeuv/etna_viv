@@ -151,7 +151,7 @@ def format_state(pos, value, fixp, state_map, tracking, describe):
         desc += ' = %f' % fixp_as_float(value)
     else:
         # For uniforms, show float value or address
-        if (pos >= 0x05000 and pos < 0x06000) or (pos >= 0x07000 and pos < 0x08000) or (pos >= 0x30000 and pos < 0x32000):
+        if (pos >= 0x05000 and pos < 0x06000) or (pos >= 0x07000 and pos < 0x08000) or (pos >= 0x30000 and pos < 0x32000) or (pos >= 0x36000 and pos < 0x38000):
             num = pos & 0xFFF
             spec = 'u%i.%s' % (num//16, COMPS[(num//4)%4])
             info = tracking.meminfo_by_address(value)
