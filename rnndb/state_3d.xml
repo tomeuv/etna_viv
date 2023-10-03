@@ -609,6 +609,7 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x01090" name="NEWRANGE_HIGH"/> <!-- HALTI5 -->
         <reg32 offset="0x01094" name="ICACHE_COUNT" brief="Number of instructions minus one"/> <!-- HALTI5 && ICACHE_PREFETCH -->
         <reg32 offset="0x01098" name="HALTI5_UNK01098"/> <!-- HALTI5 -->
+        <reg32 offset="0x0109C" name="PSCS_THROTTLE"/> <!-- PSCS_THROTTLE -->
         <reg32 offset="0x06000" name="INST_MEM" value="0x00000000" length="1024" stride="4"> <!-- instructionCount <= 256 -->
             <!-- length="instructionCount * 4" -->
         </reg32>
