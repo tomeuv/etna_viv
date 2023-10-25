@@ -374,7 +374,11 @@ xsi:schemaLocation="http://nouveau.freedesktop.org/ rules-ng.xsd">
         <reg32 offset="0x03860" name="BUG_FIXES" value="0x00000006"/> <!-- BUG_FIXES18 -->
         <reg32 offset="0x03868" name="FENCE_OUT_ADDRESS" type="VIVM"/> <!-- HALTI5 -->
         <reg32 offset="0x0386C" name="FENCE_OUT_DATA_LOW"/> <!-- HALTI5 -->
-        <reg32 offset="0x03884" name="HALTI5_UNK03884"/> <!-- HALTI5 -->
+        <reg32 offset="0x03884" name="USC_CONTROL"> <!-- HALTI5 -->
+            <bitfield high="2" low="0" name="L1_CACHE_RATIO"/>
+            <bitfield high="11" low="8" name="ATTRIB_CACHE_RATIO"/>
+            <bitfield high="20" low="16" name="UNK16"/> <!-- Galcore sets to 0x2 -->
+        </reg32>
         <reg32 offset="0x03888" name="HALTI5_SH_SPECIALS"> <!-- HALTI5 -->
             <bitfield high="6" low="0" name="VS_PSIZE_OUT"/> <!-- output slot (after permutation) * 4 -->
             <bitfield high="14" low="8" name="PS_PCOORD_IN"/> <!-- component idx in varyings -->
